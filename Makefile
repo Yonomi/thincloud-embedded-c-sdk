@@ -14,7 +14,7 @@ TEST_NAME = tests
 TEST_SRC_FILES = tests.c
 
 #IoT client directory
-IOT_CLIENT_DIR = ../aws-iot-device-sdk-embedded-C
+IOT_CLIENT_DIR = aws-iot-device-sdk-embedded-C
 
 PLATFORM_DIR = $(IOT_CLIENT_DIR)/platform/linux/mbedtls
 PLATFORM_COMMON_DIR = $(IOT_CLIENT_DIR)/platform/linux/common
@@ -30,7 +30,7 @@ IOT_SRC_FILES += $(shell find $(PLATFORM_DIR) -name '*.c')
 IOT_SRC_FILES += $(shell find $(PLATFORM_COMMON_DIR) -name '*.c')
 
 #TLS - mbedtls
-MBEDTLS_DIR = $(IOT_CLIENT_DIR)/external_libs/mbedTLS
+MBEDTLS_DIR = mbedtls
 TLS_LIB_DIR = $(MBEDTLS_DIR)/library
 TLS_INCLUDE_DIR = -I $(MBEDTLS_DIR)/include
 EXTERNAL_LIBS += -L$(TLS_LIB_DIR) 
@@ -57,10 +57,12 @@ COMPILER_FLAGS += $(LOG_FLAGS) -g -DDEBUG
 
 MBED_TLS_MAKE_CMD = $(MAKE) -C $(MBEDTLS_DIR)
 
+GIT_SUBMODULE_SYNC = git submodule update --init --recursive
 PRE_MAKE_CMD = $(MBED_TLS_MAKE_CMD)
 MAKE_CMD = $(CC) $(SRC_FILES) $(COMPILER_FLAGS) -o $(TEST_NAME) $(LD_FLAG) $(EXTERNAL_LIBS) $(INCLUDE_ALL_DIRS)
 
 all:
+	$(GIT_SUBMODULE_SYNC)
 	$(PRE_MAKE_CMD)
 	$(DEBUG)$(MAKE_CMD)
 	$(POST_MAKE_CMD)

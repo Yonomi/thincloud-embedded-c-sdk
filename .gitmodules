@@ -4,3 +4,6 @@
 [submodule "greatest"]
 	path = greatest
 	url = https://github.com/silentbicycle/greatest
+[submodule "mbedtls"]
+	path = mbedtls
+	url = https://github.com/ARMmbed/mbedtls
