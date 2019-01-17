@@ -7,7 +7,7 @@ CC = gcc
 #remove @ for no make command prints
 DEBUG = @
 
-GREATEST_DIR = ../greatest
+GREATEST_DIR = greatest
 TEST_DIR = .
 TEST_INCLUDE_DIRS += -I $(TEST_DIR) -I $(GREATEST_DIR)
 TEST_NAME = tests 
