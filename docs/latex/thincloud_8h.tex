@@ -1,0 +1,646 @@
+\hypertarget{thincloud_8h}{}\section{thincloud.\+h File Reference}
+\label{thincloud_8h}\index{thincloud.h@{thincloud.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$json-\/c/json.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}aws\+\_\+iot\+\_\+log.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}aws\+\_\+iot\+\_\+error.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}aws\+\_\+iot\+\_\+mqtt\+\_\+client\+\_\+interface.\+h\char`\"{}}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{thincloud_8h_a8f50e6165c50b7b13bcd5a7f7be4ea59}{T\+C\+\_\+\+I\+D\+\_\+\+L\+E\+N\+G\+TH}}~37
+\item 
+\#define \mbox{\hyperlink{thincloud_8h_aa17438d0e0fed8ecf8907712bd3d1035}{M\+A\+X\+\_\+\+T\+O\+P\+I\+C\+\_\+\+L\+E\+N\+G\+TH}}~257
+\item 
+\#define \mbox{\hyperlink{thincloud_8h_a18aa71f75f5c6c4fe1097e13a3c054bc}{R\+E\+Q\+U\+E\+S\+T\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+G\+ET}}~\char`\"{}G\+ET\char`\"{}
+\item 
+\#define \mbox{\hyperlink{thincloud_8h_a91540e83379cadcd55447e4940794112}{R\+E\+Q\+U\+E\+S\+T\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+P\+UT}}~\char`\"{}P\+UT\char`\"{}
+\item 
+\#define \mbox{\hyperlink{thincloud_8h_a9b7c5bc46ac350e9d92b02cd16b5c198}{R\+E\+Q\+U\+E\+S\+T\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+P\+O\+ST}}~\char`\"{}P\+O\+ST\char`\"{}
+\item 
+\#define \mbox{\hyperlink{thincloud_8h_a7f163cd1abd8ae2d463aa913d602fa86}{R\+E\+Q\+U\+E\+S\+T\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+D\+E\+L\+E\+TE}}~\char`\"{}D\+E\+L\+E\+TE\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{thincloud_8h_afb317c6af279731fbde4352fdab49143}{commission\+\_\+request\+\_\+topic}} (char $\ast$buffer, const char $\ast$device\+Type, const char $\ast$physical\+Id)
+\begin{DoxyCompactList}\small\item\em Build a commission request topic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{thincloud_8h_ae6bc0ec274f18d20093ac1dd067292ff}{commission\+\_\+response\+\_\+topic}} (char $\ast$buffer, const char $\ast$device\+Type, const char $\ast$physical\+Id, const char $\ast$request\+Id)
+\begin{DoxyCompactList}\small\item\em Build a commission response topic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{thincloud_8h_ac4ebbbc9590652d3e1df1328af53fc4d}{command\+\_\+request\+\_\+topic}} (char $\ast$buffer, const char $\ast$device\+Id)
+\begin{DoxyCompactList}\small\item\em Build a command request topic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{thincloud_8h_ae7bccd2c5f099a36f8c68df9a2f34dc3}{command\+\_\+response\+\_\+topic}} (char $\ast$buffer, const char $\ast$device\+Id, const char $\ast$command\+Id)
+\begin{DoxyCompactList}\small\item\em Build a command response topic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{thincloud_8h_a8f6490d44d7521c47df22a557d69af85}{service\+\_\+request\+\_\+topic}} (char $\ast$buffer, const char $\ast$device\+Id)
+\begin{DoxyCompactList}\small\item\em Build a service request topic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{thincloud_8h_abad67cde59183ff29b08c8909b3ee3d4}{service\+\_\+response\+\_\+topic}} (char $\ast$buffer, const char $\ast$device\+Id, const char $\ast$request\+Id)
+\begin{DoxyCompactList}\small\item\em Build a service response topic. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{thincloud_8h_aeccf99af96aa095ea4e41128a75cd197}{commissioning\+\_\+request}} (char $\ast$buffer, const char $\ast$request\+Id, const char $\ast$device\+Type, const char $\ast$physical\+Id)
+\begin{DoxyCompactList}\small\item\em Build a commissioning request. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_a3f8937ca07466ed1fc060c967b8171ed}{commissioning\+\_\+response}} (char $\ast$device\+Id, uint16\+\_\+t $\ast$status\+Code, char $\ast$request\+Id, char $\ast$payload, uint16\+\_\+t payload\+Len)
+\begin{DoxyCompactList}\small\item\em Unmarshall a commissioning response. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{thincloud_8h_a98b5cb85b0885dc2ad88e5446b4ba052}{command\+\_\+response}} (char $\ast$buffer, const char $\ast$request\+Id, uint16\+\_\+t status\+Code, bool is\+Error\+Response, char $\ast$error\+Message, json\+\_\+object $\ast$body)
+\begin{DoxyCompactList}\small\item\em Marshal a command response. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_a711278c6103ad80ac0c557fefa94a32f}{command\+\_\+request}} (char $\ast$request\+Id, char $\ast$method, json\+\_\+object $\ast$$\ast$params, const char $\ast$payload, const unsigned int payload\+Len)
+\begin{DoxyCompactList}\small\item\em Unmarshall a command request payload. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{thincloud_8h_afb9364e8c6bb9e6d1a4cd14b4409b5f9}{service\+\_\+request}} (char $\ast$buffer, const char $\ast$request\+Id, const char $\ast$method, json\+\_\+object $\ast$params)
+\begin{DoxyCompactList}\small\item\em Marshal a service request. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_af8c707008750cf2af4f74eda41f1372d}{service\+\_\+response}} (char $\ast$request\+Id, uint16\+\_\+t $\ast$status\+Code, json\+\_\+object $\ast$$\ast$data, const char $\ast$payload, const unsigned int payload\+Len)
+\begin{DoxyCompactList}\small\item\em Unmarshall a service response payload. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_abb6a737aa28611694cf6cb0971622cbf}{send\+\_\+command\+\_\+response}} (A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$client, const char $\ast$device\+Id, const char $\ast$command\+Id, uint16\+\_\+t status\+Code, bool is\+Error\+Response, char $\ast$error\+Message, json\+\_\+object $\ast$body)
+\begin{DoxyCompactList}\small\item\em Send a command response. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_a10f8012ef03c84d930b4f6eecbd31f0c}{send\+\_\+commissioning\+\_\+request}} (A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$client, const char $\ast$request\+Id, const char $\ast$device\+Type, const char $\ast$physical\+Id)
+\begin{DoxyCompactList}\small\item\em Send commissioning request. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_acc9184374a9f2d760286f4e050b7b97e}{send\+\_\+service\+\_\+request}} (A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$client, const char $\ast$request\+Id, const char $\ast$device\+Id, const char $\ast$method, json\+\_\+object $\ast$req\+Params)
+\begin{DoxyCompactList}\small\item\em Send service request. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_a2255c3713d8d0df3c6c99beb5b8d051c}{subscribe\+\_\+to\+\_\+commissioning\+\_\+response}} (A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$client, const char $\ast$request\+Id, const char $\ast$device\+Type, const char $\ast$physical\+Id, p\+Application\+Handler\+\_\+t handler, void $\ast$subscribe\+Data)
+\begin{DoxyCompactList}\small\item\em Subscribe to commissioning respones. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_af80e8155b3589d6ab203f0947acc59a0}{subscribe\+\_\+to\+\_\+command\+\_\+request}} (A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$client, const char $\ast$device\+Id, p\+Application\+Handler\+\_\+t handler, void $\ast$subscribe\+Data)
+\begin{DoxyCompactList}\small\item\em Subscribe to command requests. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_a8b3e69fc01eb8f835da79f6457499bfd}{subscribe\+\_\+to\+\_\+service\+\_\+response}} (A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$client, const char $\ast$device\+Id, const char $\ast$request\+Id, p\+Application\+Handler\+\_\+t handler, void $\ast$subscribe\+Data)
+\begin{DoxyCompactList}\small\item\em Subscribe to service responses. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_a30fe1e6714cb49a921d57244b10ec82f}{tc\+\_\+init}} (A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$client, char $\ast$host\+Addr, char $\ast$root\+C\+A\+Path, char $\ast$client\+C\+R\+T\+Path, char $\ast$client\+Key\+Path, iot\+\_\+disconnect\+\_\+handler handler, void $\ast$disconnect\+Data)
+\begin{DoxyCompactList}\small\item\em Initialize an A\+WS IoT Client. \end{DoxyCompactList}\item 
+Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_a9da5634005c1be1fdfaeddfd5d9104e0}{tc\+\_\+connect}} (A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$client, char $\ast$client\+Id, bool auto\+Reconnect)
+\begin{DoxyCompactList}\small\item\em Start M\+Q\+TT connection to Thin\+Cloud host. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{thincloud_8h_aa17438d0e0fed8ecf8907712bd3d1035}\label{thincloud_8h_aa17438d0e0fed8ecf8907712bd3d1035}} 
+\index{thincloud.h@{thincloud.h}!MAX\_TOPIC\_LENGTH@{MAX\_TOPIC\_LENGTH}}
+\index{MAX\_TOPIC\_LENGTH@{MAX\_TOPIC\_LENGTH}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{MAX\_TOPIC\_LENGTH}{MAX\_TOPIC\_LENGTH}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+T\+O\+P\+I\+C\+\_\+\+L\+E\+N\+G\+TH~257}
+
+\mbox{\Hypertarget{thincloud_8h_a7f163cd1abd8ae2d463aa913d602fa86}\label{thincloud_8h_a7f163cd1abd8ae2d463aa913d602fa86}} 
+\index{thincloud.h@{thincloud.h}!REQUEST\_METHOD\_DELETE@{REQUEST\_METHOD\_DELETE}}
+\index{REQUEST\_METHOD\_DELETE@{REQUEST\_METHOD\_DELETE}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{REQUEST\_METHOD\_DELETE}{REQUEST\_METHOD\_DELETE}}
+{\footnotesize\ttfamily \#define R\+E\+Q\+U\+E\+S\+T\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+D\+E\+L\+E\+TE~\char`\"{}D\+E\+L\+E\+TE\char`\"{}}
+
+\mbox{\Hypertarget{thincloud_8h_a18aa71f75f5c6c4fe1097e13a3c054bc}\label{thincloud_8h_a18aa71f75f5c6c4fe1097e13a3c054bc}} 
+\index{thincloud.h@{thincloud.h}!REQUEST\_METHOD\_GET@{REQUEST\_METHOD\_GET}}
+\index{REQUEST\_METHOD\_GET@{REQUEST\_METHOD\_GET}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{REQUEST\_METHOD\_GET}{REQUEST\_METHOD\_GET}}
+{\footnotesize\ttfamily \#define R\+E\+Q\+U\+E\+S\+T\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+G\+ET~\char`\"{}G\+ET\char`\"{}}
+
+\mbox{\Hypertarget{thincloud_8h_a9b7c5bc46ac350e9d92b02cd16b5c198}\label{thincloud_8h_a9b7c5bc46ac350e9d92b02cd16b5c198}} 
+\index{thincloud.h@{thincloud.h}!REQUEST\_METHOD\_POST@{REQUEST\_METHOD\_POST}}
+\index{REQUEST\_METHOD\_POST@{REQUEST\_METHOD\_POST}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{REQUEST\_METHOD\_POST}{REQUEST\_METHOD\_POST}}
+{\footnotesize\ttfamily \#define R\+E\+Q\+U\+E\+S\+T\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+P\+O\+ST~\char`\"{}P\+O\+ST\char`\"{}}
+
+\mbox{\Hypertarget{thincloud_8h_a91540e83379cadcd55447e4940794112}\label{thincloud_8h_a91540e83379cadcd55447e4940794112}} 
+\index{thincloud.h@{thincloud.h}!REQUEST\_METHOD\_PUT@{REQUEST\_METHOD\_PUT}}
+\index{REQUEST\_METHOD\_PUT@{REQUEST\_METHOD\_PUT}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{REQUEST\_METHOD\_PUT}{REQUEST\_METHOD\_PUT}}
+{\footnotesize\ttfamily \#define R\+E\+Q\+U\+E\+S\+T\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+P\+UT~\char`\"{}P\+UT\char`\"{}}
+
+\mbox{\Hypertarget{thincloud_8h_a8f50e6165c50b7b13bcd5a7f7be4ea59}\label{thincloud_8h_a8f50e6165c50b7b13bcd5a7f7be4ea59}} 
+\index{thincloud.h@{thincloud.h}!TC\_ID\_LENGTH@{TC\_ID\_LENGTH}}
+\index{TC\_ID\_LENGTH@{TC\_ID\_LENGTH}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{TC\_ID\_LENGTH}{TC\_ID\_LENGTH}}
+{\footnotesize\ttfamily \#define T\+C\+\_\+\+I\+D\+\_\+\+L\+E\+N\+G\+TH~37}
+
+Copyright 2019 Yonomi, Inc. or its affiliates. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.\+0 (the \char`\"{}\+License\char`\"{}); you may not use this file except in compliance with the License. You may obtain a copy of the License at \begin{DoxyVerb}http://www.apache.org/licenses/LICENSE-2.0
+\end{DoxyVerb}
+
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \char`\"{}\+A\+S I\+S\char`\"{} B\+A\+S\+IS, W\+I\+T\+H\+O\+UT W\+A\+R\+R\+A\+N\+T\+I\+ES OR C\+O\+N\+D\+I\+T\+I\+O\+NS OF A\+NY K\+I\+ND, either express or implied. See the License for the specific language governing permissions and limitations under the License.\+Thincloud C Embedded S\+DK
+
+Contains utilities to construct Thin\+Cloud standard topics and marshal and unmarshal request and responses. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{thincloud_8h_a711278c6103ad80ac0c557fefa94a32f}\label{thincloud_8h_a711278c6103ad80ac0c557fefa94a32f}} 
+\index{thincloud.h@{thincloud.h}!command\_request@{command\_request}}
+\index{command\_request@{command\_request}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{command\_request()}{command\_request()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t command\+\_\+request (\begin{DoxyParamCaption}\item[{char $\ast$}]{request\+Id,  }\item[{char $\ast$}]{method,  }\item[{json\+\_\+object $\ast$$\ast$}]{params,  }\item[{const char $\ast$}]{payload,  }\item[{const unsigned int}]{payload\+Len }\end{DoxyParamCaption})}
+
+
+
+Unmarshall a command request payload. 
+
+Unmarshall a command request from a string payload.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em request\+Id} & ID of the original request. \\
+\hline
+\mbox{\texttt{ out}}  & {\em method} & Command method. \\
+\hline
+\mbox{\texttt{ out}}  & {\em params} & Command request parameters. \\
+\hline
+\mbox{\texttt{ in}}  & {\em payload} & Response payload. \\
+\hline
+\mbox{\texttt{ in}}  & {\em payload\+Len} & Reponse payload\textquotesingle{}s length.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, a negative value otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_ac4ebbbc9590652d3e1df1328af53fc4d}\label{thincloud_8h_ac4ebbbc9590652d3e1df1328af53fc4d}} 
+\index{thincloud.h@{thincloud.h}!command\_request\_topic@{command\_request\_topic}}
+\index{command\_request\_topic@{command\_request\_topic}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{command\_request\_topic()}{command\_request\_topic()}}
+{\footnotesize\ttfamily int command\+\_\+request\+\_\+topic (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const char $\ast$}]{device\+Id }\end{DoxyParamCaption})}
+
+
+
+Build a command request topic. 
+
+Constructs a command request topic of the format\+: "thincloud/devices/\{device\+Id\}/command
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em buffer} & Pointer to a string buffer to write to. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Id} & Device\textquotesingle{}s ID.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the constructed string or a negative value on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_a98b5cb85b0885dc2ad88e5446b4ba052}\label{thincloud_8h_a98b5cb85b0885dc2ad88e5446b4ba052}} 
+\index{thincloud.h@{thincloud.h}!command\_response@{command\_response}}
+\index{command\_response@{command\_response}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{command\_response()}{command\_response()}}
+{\footnotesize\ttfamily int command\+\_\+response (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const char $\ast$}]{request\+Id,  }\item[{uint16\+\_\+t}]{status\+Code,  }\item[{bool}]{is\+Error\+Response,  }\item[{char $\ast$}]{error\+Message,  }\item[{json\+\_\+object $\ast$}]{body }\end{DoxyParamCaption})}
+
+
+
+Marshal a command response. 
+
+Marshal a command response into a J\+S\+ON string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em buffer} & Pointer to a string buffer to write to. \\
+\hline
+\mbox{\texttt{ in}}  & {\em request\+Id} & Command request\textquotesingle{}s ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em status\+Code} & Command\textquotesingle{}s response status. \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+Error\+Response} & Signals if a command responds with an error. \\
+\hline
+\mbox{\texttt{ in}}  & {\em error\+Message} & Response error message. Only used if is\+Error\+Response is set to true. \\
+\hline
+\mbox{\texttt{ in}}  & {\em body} & Command response body.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the constructed payload or a negative value on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_ae7bccd2c5f099a36f8c68df9a2f34dc3}\label{thincloud_8h_ae7bccd2c5f099a36f8c68df9a2f34dc3}} 
+\index{thincloud.h@{thincloud.h}!command\_response\_topic@{command\_response\_topic}}
+\index{command\_response\_topic@{command\_response\_topic}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{command\_response\_topic()}{command\_response\_topic()}}
+{\footnotesize\ttfamily int command\+\_\+response\+\_\+topic (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const char $\ast$}]{device\+Id,  }\item[{const char $\ast$}]{command\+Id }\end{DoxyParamCaption})}
+
+
+
+Build a command response topic. 
+
+Constructs a command response topic of the format\+: "thincloud/devices/\{device\+Id\}/command/\{command\+Id\}/response
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em buffer} & Pointer to a string buffer to write to. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Id} & Devices\textquotesingle{}s ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Id} & Command request\textquotesingle{}s ID.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the constructed string or a negative value on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_afb317c6af279731fbde4352fdab49143}\label{thincloud_8h_afb317c6af279731fbde4352fdab49143}} 
+\index{thincloud.h@{thincloud.h}!commission\_request\_topic@{commission\_request\_topic}}
+\index{commission\_request\_topic@{commission\_request\_topic}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{commission\_request\_topic()}{commission\_request\_topic()}}
+{\footnotesize\ttfamily int commission\+\_\+request\+\_\+topic (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const char $\ast$}]{device\+Type,  }\item[{const char $\ast$}]{physical\+Id }\end{DoxyParamCaption})}
+
+
+
+Build a commission request topic. 
+
+Constructs a commission request topic of the format\+: "thincloud/registration/\{device\+Type\}\+\_\+\{physical\+Id\}/requests
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em buffer} & Pointer to a string buffer to write to. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Type} & Devices\textquotesingle{}s device type. \\
+\hline
+\mbox{\texttt{ in}}  & {\em physical\+Id} & Device\textquotesingle{}s physical ID.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the constructed string or a negative value on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_ae6bc0ec274f18d20093ac1dd067292ff}\label{thincloud_8h_ae6bc0ec274f18d20093ac1dd067292ff}} 
+\index{thincloud.h@{thincloud.h}!commission\_response\_topic@{commission\_response\_topic}}
+\index{commission\_response\_topic@{commission\_response\_topic}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{commission\_response\_topic()}{commission\_response\_topic()}}
+{\footnotesize\ttfamily int commission\+\_\+response\+\_\+topic (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const char $\ast$}]{device\+Type,  }\item[{const char $\ast$}]{physical\+Id,  }\item[{const char $\ast$}]{request\+Id }\end{DoxyParamCaption})}
+
+
+
+Build a commission response topic. 
+
+Constructs a commission response topic of the format\+: "thincloud/registration/\{device\+Type\}\+\_\+\{physical\+Id\}/requests/\{request\+Id\}/response
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em buffer} & Pointer to a string buffer to write to. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Type} & Devices\textquotesingle{}s device type. \\
+\hline
+\mbox{\texttt{ in}}  & {\em physical\+Id} & Device\textquotesingle{}s physical ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em request\+Id} & Unique ID for the request.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the constructed string or a negative value on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_aeccf99af96aa095ea4e41128a75cd197}\label{thincloud_8h_aeccf99af96aa095ea4e41128a75cd197}} 
+\index{thincloud.h@{thincloud.h}!commissioning\_request@{commissioning\_request}}
+\index{commissioning\_request@{commissioning\_request}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{commissioning\_request()}{commissioning\_request()}}
+{\footnotesize\ttfamily int commissioning\+\_\+request (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const char $\ast$}]{request\+Id,  }\item[{const char $\ast$}]{device\+Type,  }\item[{const char $\ast$}]{physical\+Id }\end{DoxyParamCaption})}
+
+
+
+Build a commissioning request. 
+
+Construct a commissioning request.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em buffer} & Pointer to a string buffer to write to \\
+\hline
+\mbox{\texttt{ in}}  & {\em request\+Id} & Unique ID for the request \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Type} & Requesting device\textquotesingle{}s type \\
+\hline
+\mbox{\texttt{ in}}  & {\em physical\+Id} & Device\textquotesingle{}s physical ID\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the constructed payload or a negative value on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_a3f8937ca07466ed1fc060c967b8171ed}\label{thincloud_8h_a3f8937ca07466ed1fc060c967b8171ed}} 
+\index{thincloud.h@{thincloud.h}!commissioning\_response@{commissioning\_response}}
+\index{commissioning\_response@{commissioning\_response}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{commissioning\_response()}{commissioning\_response()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t commissioning\+\_\+response (\begin{DoxyParamCaption}\item[{char $\ast$}]{device\+Id,  }\item[{uint16\+\_\+t $\ast$}]{status\+Code,  }\item[{char $\ast$}]{request\+Id,  }\item[{char $\ast$}]{payload,  }\item[{uint16\+\_\+t}]{payload\+Len }\end{DoxyParamCaption})}
+
+
+
+Unmarshall a commissioning response. 
+
+Unmarshall a commissioning response from a string stream.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em device\+Id} & Assigned device ID. \\
+\hline
+\mbox{\texttt{ out}}  & {\em status\+Code} & Commissioning status. \\
+\hline
+\mbox{\texttt{ out}}  & {\em request\+Id} & ID of the original request. \\
+\hline
+\mbox{\texttt{ in}}  & {\em payload} & Response payload. \\
+\hline
+\mbox{\texttt{ in}}  & {\em payload\+Len} & Reponse payload\textquotesingle{}s length.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, a negative value otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_abb6a737aa28611694cf6cb0971622cbf}\label{thincloud_8h_abb6a737aa28611694cf6cb0971622cbf}} 
+\index{thincloud.h@{thincloud.h}!send\_command\_response@{send\_command\_response}}
+\index{send\_command\_response@{send\_command\_response}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{send\_command\_response()}{send\_command\_response()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t send\+\_\+command\+\_\+response (\begin{DoxyParamCaption}\item[{A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$}]{client,  }\item[{const char $\ast$}]{device\+Id,  }\item[{const char $\ast$}]{command\+Id,  }\item[{uint16\+\_\+t}]{status\+Code,  }\item[{bool}]{is\+Error\+Response,  }\item[{char $\ast$}]{error\+Message,  }\item[{json\+\_\+object $\ast$}]{body }\end{DoxyParamCaption})}
+
+
+
+Send a command response. 
+
+Publish a command response to M\+Q\+TT.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em client} & A\+WS IoT M\+Q\+TT Client instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Id} & Device\textquotesingle{}s ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em command\+Id} & ID of the requested command. \\
+\hline
+\mbox{\texttt{ in}}  & {\em status\+Code} & Command\textquotesingle{}s status code. \\
+\hline
+\mbox{\texttt{ in}}  & {\em is\+Error\+Response} & Signals if a command responds with an error. \\
+\hline
+\mbox{\texttt{ in}}  & {\em error\+Message} & Response error message. Only used if is\+Error\+Response is set to true. \\
+\hline
+\mbox{\texttt{ in}}  & {\em body} & Command response body.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, negative value otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_a10f8012ef03c84d930b4f6eecbd31f0c}\label{thincloud_8h_a10f8012ef03c84d930b4f6eecbd31f0c}} 
+\index{thincloud.h@{thincloud.h}!send\_commissioning\_request@{send\_commissioning\_request}}
+\index{send\_commissioning\_request@{send\_commissioning\_request}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{send\_commissioning\_request()}{send\_commissioning\_request()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t send\+\_\+commissioning\+\_\+request (\begin{DoxyParamCaption}\item[{A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$}]{client,  }\item[{const char $\ast$}]{request\+Id,  }\item[{const char $\ast$}]{device\+Type,  }\item[{const char $\ast$}]{physical\+Id }\end{DoxyParamCaption})}
+
+
+
+Send commissioning request. 
+
+Publish a commissioning request to M\+Q\+TT.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em client} & A\+WS IoT M\+Q\+TT Client instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em request\+Id} & Unique ID for the request. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Type} & Devices\textquotesingle{}s device type. \\
+\hline
+\mbox{\texttt{ in}}  & {\em physical\+Id} & Device\textquotesingle{}s physical ID.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, negative value otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_acc9184374a9f2d760286f4e050b7b97e}\label{thincloud_8h_acc9184374a9f2d760286f4e050b7b97e}} 
+\index{thincloud.h@{thincloud.h}!send\_service\_request@{send\_service\_request}}
+\index{send\_service\_request@{send\_service\_request}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{send\_service\_request()}{send\_service\_request()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t send\+\_\+service\+\_\+request (\begin{DoxyParamCaption}\item[{A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$}]{client,  }\item[{const char $\ast$}]{request\+Id,  }\item[{const char $\ast$}]{device\+Id,  }\item[{const char $\ast$}]{method,  }\item[{json\+\_\+object $\ast$}]{req\+Params }\end{DoxyParamCaption})}
+
+
+
+Send service request. 
+
+Publish a service request to M\+Q\+TT.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em client} & A\+WS IoT M\+Q\+TT Client instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em request\+Id} & Unique ID for the request. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Id} & Devices\textquotesingle{}s ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em method} & Service method to request. \\
+\hline
+\mbox{\texttt{ in}}  & {\em params} & Service request parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, negative value otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_afb9364e8c6bb9e6d1a4cd14b4409b5f9}\label{thincloud_8h_afb9364e8c6bb9e6d1a4cd14b4409b5f9}} 
+\index{thincloud.h@{thincloud.h}!service\_request@{service\_request}}
+\index{service\_request@{service\_request}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{service\_request()}{service\_request()}}
+{\footnotesize\ttfamily int service\+\_\+request (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const char $\ast$}]{request\+Id,  }\item[{const char $\ast$}]{method,  }\item[{json\+\_\+object $\ast$}]{params }\end{DoxyParamCaption})}
+
+
+
+Marshal a service request. 
+
+Marshal a service request to a J\+S\+ON string.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em buffer} & Pointer to a string buffer to write to. \\
+\hline
+\mbox{\texttt{ in}}  & {\em request\+Id} & Unique ID for the request. \\
+\hline
+\mbox{\texttt{ in}}  & {\em method} & Service method to request. \\
+\hline
+\mbox{\texttt{ in}}  & {\em params} & Service request parameters.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the constructed string or a negative value on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_a8f6490d44d7521c47df22a557d69af85}\label{thincloud_8h_a8f6490d44d7521c47df22a557d69af85}} 
+\index{thincloud.h@{thincloud.h}!service\_request\_topic@{service\_request\_topic}}
+\index{service\_request\_topic@{service\_request\_topic}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{service\_request\_topic()}{service\_request\_topic()}}
+{\footnotesize\ttfamily int service\+\_\+request\+\_\+topic (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const char $\ast$}]{device\+Id }\end{DoxyParamCaption})}
+
+
+
+Build a service request topic. 
+
+Constructs a service request topic of the format\+: "thincloud/devices/\{device\+Id\}/requests
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em buffer} & Pointer to a string buffer to write to. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Id} & Devices\textquotesingle{}s ID.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the constructed string or a negative value on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_af8c707008750cf2af4f74eda41f1372d}\label{thincloud_8h_af8c707008750cf2af4f74eda41f1372d}} 
+\index{thincloud.h@{thincloud.h}!service\_response@{service\_response}}
+\index{service\_response@{service\_response}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{service\_response()}{service\_response()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t service\+\_\+response (\begin{DoxyParamCaption}\item[{char $\ast$}]{request\+Id,  }\item[{uint16\+\_\+t $\ast$}]{status\+Code,  }\item[{json\+\_\+object $\ast$$\ast$}]{data,  }\item[{const char $\ast$}]{payload,  }\item[{const unsigned int}]{payload\+Len }\end{DoxyParamCaption})}
+
+
+
+Unmarshall a service response payload. 
+
+Unmarshall a service response from a string payload.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em request\+Id} & Request ID of the original request. \\
+\hline
+\mbox{\texttt{ out}}  & {\em status\+Code} & Request\textquotesingle{}s status. \\
+\hline
+\mbox{\texttt{ out}}  & {\em data} & Response\textquotesingle{}s data. \\
+\hline
+\mbox{\texttt{ in}}  & {\em payload} & Response payload. \\
+\hline
+\mbox{\texttt{ in}}  & {\em payload\+Len} & Reponse payload\textquotesingle{}s length.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, a negative value otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_abad67cde59183ff29b08c8909b3ee3d4}\label{thincloud_8h_abad67cde59183ff29b08c8909b3ee3d4}} 
+\index{thincloud.h@{thincloud.h}!service\_response\_topic@{service\_response\_topic}}
+\index{service\_response\_topic@{service\_response\_topic}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{service\_response\_topic()}{service\_response\_topic()}}
+{\footnotesize\ttfamily int service\+\_\+response\+\_\+topic (\begin{DoxyParamCaption}\item[{char $\ast$}]{buffer,  }\item[{const char $\ast$}]{device\+Id,  }\item[{const char $\ast$}]{request\+Id }\end{DoxyParamCaption})}
+
+
+
+Build a service response topic. 
+
+Constructs a service response topic of the format\+: "thincloud/devices/\{device\+Id\}/requests/s/response
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ out}}  & {\em buffer} & Pointer to a string buffer to write to. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Id} & Devices\textquotesingle{}s ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em request\+Id} & Request\textquotesingle{}s ID.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the constructed string or a negative value on error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_af80e8155b3589d6ab203f0947acc59a0}\label{thincloud_8h_af80e8155b3589d6ab203f0947acc59a0}} 
+\index{thincloud.h@{thincloud.h}!subscribe\_to\_command\_request@{subscribe\_to\_command\_request}}
+\index{subscribe\_to\_command\_request@{subscribe\_to\_command\_request}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{subscribe\_to\_command\_request()}{subscribe\_to\_command\_request()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t subscribe\+\_\+to\+\_\+command\+\_\+request (\begin{DoxyParamCaption}\item[{A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$}]{client,  }\item[{const char $\ast$}]{device\+Id,  }\item[{p\+Application\+Handler\+\_\+t}]{handler,  }\item[{void $\ast$}]{subscribe\+Data }\end{DoxyParamCaption})}
+
+
+
+Subscribe to command requests. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em client} & A\+WS IoT M\+Q\+TT Client instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Id} & Device\textquotesingle{}s ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em handler} & Subscription response handler. \\
+\hline
+\mbox{\texttt{ in}}  & {\em subscriber\+Data} & Data blob to be passed to the subscription handler on invoke.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, negative value otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_a2255c3713d8d0df3c6c99beb5b8d051c}\label{thincloud_8h_a2255c3713d8d0df3c6c99beb5b8d051c}} 
+\index{thincloud.h@{thincloud.h}!subscribe\_to\_commissioning\_response@{subscribe\_to\_commissioning\_response}}
+\index{subscribe\_to\_commissioning\_response@{subscribe\_to\_commissioning\_response}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{subscribe\_to\_commissioning\_response()}{subscribe\_to\_commissioning\_response()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t subscribe\+\_\+to\+\_\+commissioning\+\_\+response (\begin{DoxyParamCaption}\item[{A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$}]{client,  }\item[{const char $\ast$}]{request\+Id,  }\item[{const char $\ast$}]{device\+Type,  }\item[{const char $\ast$}]{physical\+Id,  }\item[{p\+Application\+Handler\+\_\+t}]{handler,  }\item[{void $\ast$}]{subscribe\+Data }\end{DoxyParamCaption})}
+
+
+
+Subscribe to commissioning respones. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em client} & A\+WS IoT M\+Q\+TT Client instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em request\+Id} & Unique ID of a request. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Type} & Devices\textquotesingle{}s device type. \\
+\hline
+\mbox{\texttt{ in}}  & {\em physical\+Id} & Device\textquotesingle{}s physical ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em handler} & Subscription response handler. \\
+\hline
+\mbox{\texttt{ in}}  & {\em subscriber\+Data} & Data blob to be passed to the subscription handler on invoke.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, negative value otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_a8b3e69fc01eb8f835da79f6457499bfd}\label{thincloud_8h_a8b3e69fc01eb8f835da79f6457499bfd}} 
+\index{thincloud.h@{thincloud.h}!subscribe\_to\_service\_response@{subscribe\_to\_service\_response}}
+\index{subscribe\_to\_service\_response@{subscribe\_to\_service\_response}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{subscribe\_to\_service\_response()}{subscribe\_to\_service\_response()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t subscribe\+\_\+to\+\_\+service\+\_\+response (\begin{DoxyParamCaption}\item[{A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$}]{client,  }\item[{const char $\ast$}]{device\+Id,  }\item[{const char $\ast$}]{request\+Id,  }\item[{p\+Application\+Handler\+\_\+t}]{handler,  }\item[{void $\ast$}]{subscribe\+Data }\end{DoxyParamCaption})}
+
+
+
+Subscribe to service responses. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em client} & A\+WS IoT M\+Q\+TT Client instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em device\+Id} & Device\textquotesingle{}s ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em request\+Id} & Unique ID of a request. \\
+\hline
+\mbox{\texttt{ in}}  & {\em handler} & Subscription response handler. \\
+\hline
+\mbox{\texttt{ in}}  & {\em subscriber\+Data} & Data blob to be passed to the subscription handler on invoke.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, negative value otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_a9da5634005c1be1fdfaeddfd5d9104e0}\label{thincloud_8h_a9da5634005c1be1fdfaeddfd5d9104e0}} 
+\index{thincloud.h@{thincloud.h}!tc\_connect@{tc\_connect}}
+\index{tc\_connect@{tc\_connect}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{tc\_connect()}{tc\_connect()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t tc\+\_\+connect (\begin{DoxyParamCaption}\item[{A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$}]{client,  }\item[{char $\ast$}]{client\+Id,  }\item[{bool}]{auto\+Reconnect }\end{DoxyParamCaption})}
+
+
+
+Start M\+Q\+TT connection to Thin\+Cloud host. 
+
+Initialize an M\+Q\+TT conenction to a thincloud host.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em client} & A\+WS IoT M\+Q\+TT Client instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em client\+Id} & An unique ID for the client instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em auto\+Reconnect} & Signals if the M\+Q\+TT client should attempt to auto-\/reconnect after connection failures.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, negative value otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{thincloud_8h_a30fe1e6714cb49a921d57244b10ec82f}\label{thincloud_8h_a30fe1e6714cb49a921d57244b10ec82f}} 
+\index{thincloud.h@{thincloud.h}!tc\_init@{tc\_init}}
+\index{tc\_init@{tc\_init}!thincloud.h@{thincloud.h}}
+\subsubsection{\texorpdfstring{tc\_init()}{tc\_init()}}
+{\footnotesize\ttfamily Io\+T\+\_\+\+Error\+\_\+t tc\+\_\+init (\begin{DoxyParamCaption}\item[{A\+W\+S\+\_\+\+Io\+T\+\_\+\+Client $\ast$}]{client,  }\item[{char $\ast$}]{host\+Addr,  }\item[{char $\ast$}]{root\+C\+A\+Path,  }\item[{char $\ast$}]{client\+C\+R\+T\+Path,  }\item[{char $\ast$}]{client\+Key\+Path,  }\item[{iot\+\_\+disconnect\+\_\+handler}]{handler,  }\item[{void $\ast$}]{disconnect\+Data }\end{DoxyParamCaption})}
+
+
+
+Initialize an A\+WS IoT Client. 
+
+Initialize an A\+WS IoT Client instance with Thin\+Cloud specific parameters and defaults.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em client} & A\+WS IoT M\+Q\+TT Client instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em host\+Addr} & Thin\+Cloud host address. \\
+\hline
+\mbox{\texttt{ in}}  & {\em root\+C\+A\+Path} & Path to a root CA. \\
+\hline
+\mbox{\texttt{ in}}  & {\em client\+C\+R\+T\+Path} & Path to a client C\+RT. \\
+\hline
+\mbox{\texttt{ in}}  & {\em client\+Key\+Path} & Path to a client private key. \\
+\hline
+\mbox{\texttt{ in}}  & {\em handler} & Disconnect handler. \\
+\hline
+\mbox{\texttt{ in}}  & {\em disconnect\+Data} & Data blob to be passed to the disconnect handler on invoke.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero on success, negative value otherwise 
+\end{DoxyReturn}
