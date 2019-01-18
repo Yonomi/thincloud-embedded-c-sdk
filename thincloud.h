@@ -338,7 +338,6 @@ int command_response(char *buffer, const char *requestId, uint16_t statusCode, b
         json_object_object_add(obj, "id", value);
     }
 
-    json_object *result = json_object_new_object();
     json_object *statusCodeValue = json_object_new_int(statusCode);
 
     if (isErrorResponse)
