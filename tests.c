@@ -162,7 +162,7 @@ TEST should_process_commissioning_response(void)
     char requestId[TC_ID_LENGTH] = {};
     uint16_t statusCode = 0;
 
-    const char *response = "{\"id\":\"1234\",\"result\":{\"statusCode\":200,\"deviceId\":\"5678\"}}";
+    char *response = "{\"id\":\"1234\",\"result\":{\"statusCode\":200,\"deviceId\":\"5678\"}}";
     const size_t respLen = strlen(response);
 
     const IoT_Error_t rc = commissioning_response(deviceId, &statusCode, requestId, response, respLen);
