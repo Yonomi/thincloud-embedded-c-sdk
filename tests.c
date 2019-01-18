@@ -12,7 +12,7 @@ TEST should_build_commission_topic(void)
     const int rc = commission_request_topic(topic, "lock", "123456");
 
     const char *expectedStr = "thincloud/registration/lock_123456/requests";
-    const size_t expectedStrLen = strlen(expectedStr);
+    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
     ASSERT_EQ(expectedStrLen, rc);
@@ -37,7 +37,7 @@ TEST should_build_commission_response_topic(void)
     const int rc = commission_response_topic(topic, "lock", "123456", "123");
 
     const char *expectedStr = "thincloud/registration/lock_123456/requests/123/response";
-    const size_t expectedStrLen = strlen(expectedStr);
+    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
     ASSERT_EQ(expectedStrLen, rc);
@@ -51,7 +51,7 @@ TEST should_build_command_request_topic(void)
     const int rc = command_request_topic(topic, "123456");
 
     const char *expectedStr = "thincloud/devices/123456/command";
-    const size_t expectedStrLen = strlen(expectedStr);
+    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
     ASSERT_EQ(expectedStrLen, rc);
@@ -65,7 +65,7 @@ TEST should_build_command_response_topic(void)
     const int rc = command_response_topic(topic, "123456", "7890");
 
     const char *expectedStr = "thincloud/devices/123456/command/7890/response";
-    const size_t expectedStrLen = strlen(expectedStr);
+    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
     ASSERT_EQ(expectedStrLen, rc);
@@ -79,7 +79,7 @@ TEST should_build_service_request_topic(void)
     const int rc = service_request_topic(topic, "123456");
 
     const char *expectedStr = "thincloud/devices/123456/requests";
-    const size_t expectedStrLen = strlen(expectedStr);
+    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
     ASSERT_EQ(expectedStrLen, rc);
@@ -93,7 +93,7 @@ TEST should_build_service_response_topic(void)
     const int rc = service_response_topic(topic, "123456", "7890");
 
     const char *expectedStr = "thincloud/devices/123456/requests/7890/response";
-    const size_t expectedStrLen = strlen(expectedStr);
+    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
     ASSERT_EQ(expectedStrLen, rc);
@@ -107,10 +107,8 @@ TEST should_build_commission_request(void)
 
     const int rc = commissioning_request(buffer, "1234", "lock", "5678");
 
-    json_object *body = json_object_new_object();
-
     const char *expectedStr = "{\"id\":\"1234\",\"method\":\"commission\",\"params\":{\"data\":{\"deviceType\":\"lock\",\"physicalId\":\"5678\"}}}";
-    const size_t expectedStrLen = strlen(expectedStr);
+    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, buffer);
     ASSERT_EQ(expectedStrLen, rc);
@@ -129,7 +127,7 @@ TEST should_build_command_response(void)
     const int rc = command_response(buffer, "1234", 200, false, NULL, body);
 
     const char *expectedStr = "{\"id\":\"1234\",\"result\":{\"statusCode\":200,\"body\":{\"foo\":\"bar\"}}}";
-    const size_t expectedStrLen = strlen(expectedStr);
+    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, buffer);
     ASSERT_EQ(expectedStrLen, rc);
@@ -148,7 +146,7 @@ TEST should_build_service_request(void)
     const int rc = service_request(buffer, "1234", REQUEST_METHOD_GET, params);
 
     const char *expectedStr = "{\"id\":\"1234\",\"method\":\"GET\",\"params\":{\"foo\":\"bar\"}}";
-    const size_t expectedStrLen = strlen(expectedStr);
+    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, buffer);
     ASSERT_EQ(expectedStrLen, rc);
@@ -158,12 +156,12 @@ TEST should_build_service_request(void)
 
 TEST should_process_commissioning_response(void)
 {
-    char deviceId[TC_ID_LENGTH] = {};
-    char requestId[TC_ID_LENGTH] = {};
+    char deviceId[TC_ID_LENGTH];
+    char requestId[TC_ID_LENGTH];
     uint16_t statusCode = 0;
 
     char *response = "{\"id\":\"1234\",\"result\":{\"statusCode\":200,\"deviceId\":\"5678\"}}";
-    const size_t respLen = strlen(response);
+    const int respLen = strlen(response);
 
     const IoT_Error_t rc = commissioning_response(deviceId, &statusCode, requestId, response, respLen);
 
@@ -178,8 +176,8 @@ TEST should_process_commissioning_response(void)
 
 TEST should_process_command_request(void)
 {
-    char requestId[TC_ID_LENGTH] = {};
-    char method[64] = {};
+    char requestId[TC_ID_LENGTH];
+    char method[64];
 
     json_object *params = NULL;
 
@@ -210,7 +208,7 @@ TEST should_process_command_request(void)
 
 TEST should_process_service_response(void)
 {
-    char requestId[TC_ID_LENGTH] = {};
+    char requestId[TC_ID_LENGTH];
     uint16_t statusCode = 0;
 
     json_object *data = NULL;

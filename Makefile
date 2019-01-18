@@ -51,7 +51,7 @@ LOG_FLAGS += -DENABLE_IOT_INFO
 LOG_FLAGS += -DENABLE_IOT_WARN
 LOG_FLAGS += -DENABLE_IOT_ERROR
 
-COMPILER_FLAGS += $(LOG_FLAGS) -g -DDEBUG
+COMPILER_FLAGS += $(LOG_FLAGS) -g -DDEBUG -Wall -Wextra -Wpedantic -Wshadow -Wstrict-overflow -fno-strict-aliasing
 #If the processor is big endian uncomment the compiler flag
 #COMPILER_FLAGS += -DREVERSED
 
