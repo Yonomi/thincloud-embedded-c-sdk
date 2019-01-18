@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-#pragma once
+#ifndef THINCLOUD_EMBEDDED_C_SDK_
+#define THINCLOUD_EMBEDDED_C_SDK_
 
 /**
  * Thincloud C Embedded SDK
@@ -814,3 +815,5 @@ IoT_Error_t tc_connect(AWS_IoT_Client *client, char *clientId, bool autoReconnec
 
     FUNC_EXIT_RC(SUCCESS);
 }
+
+#endif /* THINCLOUD_EMBEDDED_C_SDK_ */
