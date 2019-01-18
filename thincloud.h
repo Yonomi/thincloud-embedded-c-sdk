@@ -32,6 +32,7 @@
 
 #include "aws_iot_log.h"
 #include "aws_iot_error.h"
+#include "aws_iot_mqtt_client_interface.h"
 
 #define TC_ID_LENGTH 37      // UUID standard length plus null character
 #define MAX_TOPIC_LENGTH 257 // AWS IoT Max Topic Length plus null character
@@ -53,7 +54,7 @@
  * 
  * @return Length of the constructed string or a negative value on error
  */
-int commission_request_topic(char *buffer, char *deviceType, char *physicalId)
+int commission_request_topic(char *buffer, const char *deviceType, const char *physicalId)
 {
     if (buffer == NULL)
     {
@@ -81,7 +82,7 @@ int commission_request_topic(char *buffer, char *deviceType, char *physicalId)
  * 
  * @return Length of the constructed string or a negative value on error
  */
-int commission_response_topic(char *buffer, char *deviceType, char *physicalId, char *requestId)
+int commission_response_topic(char *buffer, const char *deviceType, const char *physicalId, const char *requestId)
 {
     if (buffer == NULL)
     {
@@ -107,7 +108,7 @@ int commission_response_topic(char *buffer, char *deviceType, char *physicalId, 
  * 
  * @return Length of the constructed string or a negative value on error
  */
-int command_request_topic(char *buffer, char *deviceId)
+int command_request_topic(char *buffer, const char *deviceId)
 {
     if (buffer == NULL)
     {
@@ -134,7 +135,7 @@ int command_request_topic(char *buffer, char *deviceId)
  * 
  * @return Length of the constructed string or a negative value on error
  */
-int command_response_topic(char *buffer, char *deviceId, char *commandId)
+int command_response_topic(char *buffer, const char *deviceId, const char *commandId)
 {
     if (buffer == NULL)
     {
@@ -160,7 +161,7 @@ int command_response_topic(char *buffer, char *deviceId, char *commandId)
  * 
  * @return Length of the constructed string or a negative value on error
  */
-int service_request_topic(char *buffer, char *deviceId)
+int service_request_topic(char *buffer, const char *deviceId)
 {
     if (buffer == NULL)
     {
@@ -187,7 +188,7 @@ int service_request_topic(char *buffer, char *deviceId)
  * 
  * @return Length of the constructed string or a negative value on error
  */
-int service_response_topic(char *buffer, char *deviceId, char *requestId)
+int service_response_topic(char *buffer, const char *deviceId, const char *requestId)
 {
     if (buffer == NULL)
     {
@@ -214,7 +215,7 @@ int service_response_topic(char *buffer, char *deviceId, char *requestId)
  * 
  * @return Length of the constructed payload or a negative value on error
  */
-int commissioning_request(char *buffer, char *requestId, char *deviceType, char *physicalId)
+int commissioning_request(char *buffer, const char *requestId, const char *deviceType, const char *physicalId)
 {
     if (deviceType == NULL || physicalId == NULL)
     {
@@ -265,7 +266,7 @@ int commissioning_request(char *buffer, char *requestId, char *deviceType, char 
  * 
  * @return Zero on success, a negative value otherwise 
  */
-IoT_Error_t commissioning_response(char *deviceId, uint16_t *statusCode, char *requestId, const char *payload, const unsigned int payloadLen)
+IoT_Error_t commissioning_response(char *deviceId, uint16_t *statusCode, char *requestId, char *payload, uint16_t payloadLen)
 {
     if (payload == NULL || payloadLen == 0)
     {
@@ -449,7 +450,7 @@ IoT_Error_t command_request(char *requestId, char *method, json_object **params,
  * 
  * @return Length of the constructed string or a negative value on error
  */
-int service_request(char *buffer, char *requestId, char *method, json_object *params)
+int service_request(char *buffer, const char *requestId, const char *method, json_object *params)
 {
     json_object *obj = json_object_new_object();
     if (requestId != NULL)
@@ -535,6 +536,282 @@ IoT_Error_t service_response(char *requestId, uint16_t *statusCode, json_object 
 
     json_tokener_free(tok);
     json_object_put(obj);
+
+    FUNC_EXIT_RC(SUCCESS);
+}
+
+/**
+ * @brief Send a command response.
+ * 
+ * Publish a command response to MQTT.
+ * 
+ * @param[in]  client           AWS IoT MQTT Client instance.
+ * @param[in]  deviceId         Device's ID.
+ * @param[in]  commandId        ID of the requested command.
+ * @param[in]  statusCode       Command's status code.
+ * @param[in]  isErrorResponse  Signals if a command responds with an error.
+ * @param[in]  errorMessage     Response error message. Only used if isErrorResponse is set to true.
+ * @param[in]  body             Command response body.
+ * 
+ * @return Zero on success, negative value otherwise 
+ */
+IoT_Error_t send_command_response(AWS_IoT_Client *client, const char *deviceId, const char *commandId, uint16_t statusCode, bool isErrorResponse, char *errorMessage, json_object *body)
+{
+    char topic[MAX_TOPIC_LENGTH];
+
+    int topicLen = command_response_topic(topic, deviceId, commandId);
+    if (topicLen <= 0)
+    {
+        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+    }
+
+    char payload[MAX_JSON_TOKEN_EXPECTED];
+
+    IoT_Error_t rc = command_response(payload, commandId, statusCode, isErrorResponse, errorMessage, body);
+
+    if (rc != SUCCESS)
+    {
+        FUNC_EXIT_RC(rc);
+    }
+
+    IoT_Publish_Message_Params params;
+    params.qos = QOS0;
+    params.isRetained = false;
+    params.payload = (void *)payload;
+    params.payloadLen = strlen(payload);
+
+    return aws_iot_mqtt_publish(client, topic, topicLen, &params);
+}
+
+/**
+ * @brief Send commissioning request
+ * 
+ * Publish a commissioning request to MQTT.
+ * 
+ * @param[in]  client      AWS IoT MQTT Client instance.
+ * @param[in]  requestId   Unique ID for the request.
+ * @param[in]  deviceType  Devices's device type.
+ * @param[in]  physicalId  Device's physical ID.
+ * 
+ * @return Zero on success, negative value otherwise 
+ */
+IoT_Error_t send_commissioning_request(AWS_IoT_Client *client, const char *requestId, const char *deviceType, const char *physicalId)
+{
+    char topic[MAX_TOPIC_LENGTH];
+
+    int topicLen = commission_request_topic(topic, deviceType, physicalId);
+
+    if (topicLen <= 0)
+    {
+        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+    }
+
+    char payload[MAX_JSON_TOKEN_EXPECTED];
+
+    IoT_Error_t rc = commissioning_request(payload, requestId, deviceType, physicalId);
+
+    if (rc != SUCCESS)
+    {
+        FUNC_EXIT_RC(rc);
+    }
+
+    IoT_Publish_Message_Params params;
+    params.qos = QOS0;
+    params.isRetained = false;
+    params.payload = (void *)payload;
+    params.payloadLen = strlen(payload);
+
+    return aws_iot_mqtt_publish(client, topic, topicLen, &params);
+}
+
+/**
+ * @brief Send service request
+ * 
+ * Publish a service request to MQTT.
+ * 
+ * @param[in]  client     AWS IoT MQTT Client instance.
+ * @param[in]  requestId  Unique ID for the request.
+ * @param[in]  deviceId   Devices's ID.
+ * @param[in]  method     Service method to request.
+ * @param[in]  params     Service request parameters.
+ * 
+ * @return Zero on success, negative value otherwise 
+ */
+IoT_Error_t send_service_request(AWS_IoT_Client *client, const char *requestId, const char *deviceId, const char *method, json_object *reqParams)
+{
+    char topic[MAX_TOPIC_LENGTH];
+
+    int topicLen = service_request_topic(topic, deviceId);
+
+    if (topicLen <= 0)
+    {
+        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+    }
+
+    char payload[MAX_JSON_TOKEN_EXPECTED];
+
+    IoT_Error_t rc = service_request(payload, requestId, method, reqParams);
+
+    if (rc != SUCCESS)
+    {
+        FUNC_EXIT_RC(rc);
+    }
+
+    IoT_Publish_Message_Params params;
+    params.qos = QOS0;
+    params.isRetained = false;
+    params.payload = (void *)payload;
+    params.payloadLen = strlen(payload);
+
+    return aws_iot_mqtt_publish(client, topic, topicLen, &params);
+}
+
+/**
+ * @brief Subscribe to commissioning respones
+ * 
+ * @param[in]  client          AWS IoT MQTT Client instance.
+ * @param[in]  requestId       Unique ID of a request.
+ * @param[in]  deviceType      Devices's device type.
+ * @param[in]  physicalId      Device's physical ID.
+ * @param[in]  handler         Subscription response handler.
+ * @param[in]  subscriberData  Data blob to be passed to the subscription handler on invoke.
+ * 
+ * @return Zero on success, negative value otherwise 
+ */
+IoT_Error_t subscribe_to_commissioning_response(AWS_IoT_Client *client, const char *requestId, const char *deviceType, const char *physicalId, pApplicationHandler_t handler, void *subscribeData)
+{
+    char topic[MAX_TOPIC_LENGTH];
+
+    int topicLen = commission_response_topic(topic, deviceType, physicalId, requestId);
+
+    if (topicLen <= 0)
+    {
+        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+    }
+
+    return aws_iot_mqtt_subscribe(client, topic, topicLen, QOS0, handler, subscribeData);
+}
+
+/**
+ * @brief Subscribe to command requests
+ * 
+ * @param[in]  client          AWS IoT MQTT Client instance.
+ * @param[in]  deviceId        Device's ID.
+ * @param[in]  handler         Subscription response handler.
+ * @param[in]  subscriberData  Data blob to be passed to the subscription handler on invoke.
+ * 
+ * @return Zero on success, negative value otherwise 
+ */
+IoT_Error_t subscribe_to_command_request(AWS_IoT_Client *client, const char *deviceId, pApplicationHandler_t handler, void *subscribeData)
+{
+    char topic[MAX_TOPIC_LENGTH];
+
+    int topicLen = command_request_topic(topic, deviceId);
+
+    if (topicLen <= 0)
+    {
+        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+    }
+
+    return aws_iot_mqtt_subscribe(client, topic, topicLen, QOS0, handler, subscribeData);
+}
+
+/**
+ * @brief Subscribe to service responses
+ * 
+ * @param[in]  client          AWS IoT MQTT Client instance.
+ * @param[in]  deviceId        Device's ID.
+ * @param[in]  requestId       Unique ID of a request.
+ * @param[in]  handler         Subscription response handler.
+ * @param[in]  subscriberData  Data blob to be passed to the subscription handler on invoke.
+ * 
+ * @return Zero on success, negative value otherwise 
+ */
+IoT_Error_t subscribe_to_service_response(AWS_IoT_Client *client, const char *deviceId, const char *requestId, pApplicationHandler_t handler, void *subscribeData)
+{
+    char topic[MAX_TOPIC_LENGTH];
+
+    int topicLen = service_response_topic(topic, deviceId, requestId);
+
+    if (topicLen <= 0)
+    {
+        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+    }
+
+    return aws_iot_mqtt_subscribe(client, topic, topicLen, QOS0, handler, subscribeData);
+}
+
+/**
+ * @brief Initialize an AWS IoT Client 
+ * 
+ * Initialize an AWS IoT Client instance with ThinCloud specific parameters and defaults.
+ * 
+ * @param[in]  client          AWS IoT MQTT Client instance.
+ * @param[in]  hostAddr        ThinCloud host address. 
+ * @param[in]  rootCAPath      Path to a root CA.
+ * @param[in]  clientCRTPath   Path to a client CRT.
+ * @param[in]  clientKeyPath   Path to a client private key.
+ * @param[in]  handler         Disconnect handler.
+ * @param[in]  disconnectData  Data blob to be passed to the disconnect handler on invoke.
+ * 
+ * @return Zero on success, negative value otherwise 
+ */
+IoT_Error_t tc_init(AWS_IoT_Client *client, char *hostAddr, char *rootCAPath, char *clientCRTPath, char *clientKeyPath, iot_disconnect_handler handler, void *disconnectData)
+{
+    IoT_Client_Init_Params params;
+
+    params.enableAutoReconnect = false; // We enable this on connect
+    params.pHostURL = hostAddr;
+    params.port = 443; // Default MQTT port
+    params.pRootCALocation = rootCAPath;
+    params.pDeviceCertLocation = clientCRTPath;
+    params.pDevicePrivateKeyLocation = clientKeyPath;
+    params.mqttCommandTimeout_ms = 20000;
+    params.tlsHandshakeTimeout_ms = 5000;
+    params.isSSLHostnameVerify = true;
+    params.disconnectHandler = handler;
+    params.disconnectHandlerData = disconnectData;
+
+    return aws_iot_mqtt_init(client, &params);
+}
+
+/**
+ * @brief Start MQTT connection to ThinCloud host
+ * 
+ * Initialize an MQTT conenction to a thincloud host.
+ * 
+ * @param[in]  client         AWS IoT MQTT Client instance.
+ * @param[in]  clientId       An unique ID for the client instance.
+ * @param[in]  autoReconnect  Signals if the MQTT client should attempt to auto-reconnect
+ *                            after connection failures.
+ * 
+ * @return Zero on success, negative value otherwise 
+ */
+IoT_Error_t tc_connect(AWS_IoT_Client *client, char *clientId, bool autoReconnect)
+{
+    IoT_Client_Connect_Params params;
+
+    params.keepAliveIntervalInSec = 600;
+    params.isCleanSession = true;
+    params.MQTTVersion = MQTT_3_1_1;
+    params.pClientID = clientId;
+    params.clientIDLen = (uint16_t)strlen(clientId);
+    params.isWillMsgPresent = false;
+
+    IoT_Error_t rc = aws_iot_mqtt_connect(client, &params);
+    if (rc != SUCCESS)
+    {
+        FUNC_EXIT_RC(rc);
+    }
+
+    if (autoReconnect)
+    {
+        rc = aws_iot_mqtt_autoreconnect_set_status(client, true);
+        if (rc != SUCCESS)
+        {
+            FUNC_EXIT_RC(rc);
+        }
+    }
 
     FUNC_EXIT_RC(SUCCESS);
 }
