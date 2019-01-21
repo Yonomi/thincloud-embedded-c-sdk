@@ -2,7 +2,7 @@
 
 A header-only helper library for embedded devices wanting to connect to ThinCloud.
 
-Documentation can be found [here](https://yonomi.github.io/thincloud-embedded-c-sdk/docs/html/index.html)
+Documentation can be found [here](https://yonomi.github.io/thincloud-embedded-c-sdk/html/index.html)
 
 ## Dependencies
 
