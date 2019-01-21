@@ -1,5 +1,3 @@
-#include <json-c/json.h>
-
 #include "thincloud.h"
 #include "greatest.h"
 

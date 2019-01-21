@@ -81,7 +81,7 @@ Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_a9da5634005c1be1fdfaeddf
 \subsubsection{\texorpdfstring{MAX\_TOPIC\_LENGTH}{MAX\_TOPIC\_LENGTH}}
 {\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+T\+O\+P\+I\+C\+\_\+\+L\+E\+N\+G\+TH~257}
 
-\mbox{\Hypertarget{thincloud_8h_a7f163cd1abd8ae2d463aa913d602fa86}\label{thincloud_8h_a7f163cd1abd8ae2d463aa913d602fa86}} 
+A\+WS IoT Max Topic Length plus null character \mbox{\Hypertarget{thincloud_8h_a7f163cd1abd8ae2d463aa913d602fa86}\label{thincloud_8h_a7f163cd1abd8ae2d463aa913d602fa86}} 
 \index{thincloud.h@{thincloud.h}!REQUEST\_METHOD\_DELETE@{REQUEST\_METHOD\_DELETE}}
 \index{REQUEST\_METHOD\_DELETE@{REQUEST\_METHOD\_DELETE}!thincloud.h@{thincloud.h}}
 \subsubsection{\texorpdfstring{REQUEST\_METHOD\_DELETE}{REQUEST\_METHOD\_DELETE}}
@@ -111,13 +111,7 @@ Io\+T\+\_\+\+Error\+\_\+t \mbox{\hyperlink{thincloud_8h_a9da5634005c1be1fdfaeddf
 \subsubsection{\texorpdfstring{TC\_EMBEDDED\_C\_SDK\_VERSION\_MAJOR}{TC\_EMBEDDED\_C\_SDK\_VERSION\_MAJOR}}
 {\footnotesize\ttfamily \#define T\+C\+\_\+\+E\+M\+B\+E\+D\+D\+E\+D\+\_\+\+C\+\_\+\+S\+D\+K\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+M\+A\+J\+OR~1}
 
-Copyright 2019 Yonomi, Inc. or its affiliates. All Rights Reserved.
-
-Licensed under the Apache License, Version 2.\+0 (the \char`\"{}\+License\char`\"{}); you may not use this file except in compliance with the License. You may obtain a copy of the License at \begin{DoxyVerb}http://www.apache.org/licenses/LICENSE-2.0
-\end{DoxyVerb}
-
-
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \char`\"{}\+A\+S I\+S\char`\"{} B\+A\+S\+IS, W\+I\+T\+H\+O\+UT W\+A\+R\+R\+A\+N\+T\+I\+ES OR C\+O\+N\+D\+I\+T\+I\+O\+NS OF A\+NY K\+I\+ND, either express or implied. See the License for the specific language governing permissions and limitations under the License. \mbox{\Hypertarget{thincloud_8h_aeacc51b5a718d3c684016049a5ecb9a1}\label{thincloud_8h_aeacc51b5a718d3c684016049a5ecb9a1}} 
+\mbox{\Hypertarget{thincloud_8h_aeacc51b5a718d3c684016049a5ecb9a1}\label{thincloud_8h_aeacc51b5a718d3c684016049a5ecb9a1}} 
 \index{thincloud.h@{thincloud.h}!TC\_EMBEDDED\_C\_SDK\_VERSION\_MINOR@{TC\_EMBEDDED\_C\_SDK\_VERSION\_MINOR}}
 \index{TC\_EMBEDDED\_C\_SDK\_VERSION\_MINOR@{TC\_EMBEDDED\_C\_SDK\_VERSION\_MINOR}!thincloud.h@{thincloud.h}}
 \subsubsection{\texorpdfstring{TC\_EMBEDDED\_C\_SDK\_VERSION\_MINOR}{TC\_EMBEDDED\_C\_SDK\_VERSION\_MINOR}}
@@ -135,9 +129,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 \subsubsection{\texorpdfstring{TC\_ID\_LENGTH}{TC\_ID\_LENGTH}}
 {\footnotesize\ttfamily \#define T\+C\+\_\+\+I\+D\+\_\+\+L\+E\+N\+G\+TH~37}
 
-Thincloud C Embedded S\+DK
-
-Contains utilities to construct Thin\+Cloud standard topics and marshal and unmarshal request and responses. 
+U\+U\+ID standard length plus null character 
 
 \subsection{Function Documentation}
 \mbox{\Hypertarget{thincloud_8h_a711278c6103ad80ac0c557fefa94a32f}\label{thincloud_8h_a711278c6103ad80ac0c557fefa94a32f}} 
@@ -178,7 +170,7 @@ Zero on success, a negative value otherwise
 
 Build a command request topic. 
 
-Constructs a command request topic of the format\+: "thincloud/devices/\{device\+Id\}/command
+Constructs a command request topic of the format \char`\"{}thincloud/devices/\{device\+Id\}/command\char`\"{}
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -230,7 +222,7 @@ Length of the constructed payload or a negative value on error
 
 Build a command response topic. 
 
-Constructs a command response topic of the format\+: "thincloud/devices/\{device\+Id\}/command/\{command\+Id\}/response
+Constructs a command response topic of the format \char`\"{}thincloud/devices/\{device\+Id\}/command/\{command\+Id\}/response\char`\"{}
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -254,7 +246,7 @@ Length of the constructed string or a negative value on error
 
 Build a commission request topic. 
 
-Constructs a commission request topic of the format\+: "thincloud/registration/\{device\+Type\}\+\_\+\{physical\+Id\}/requests
+Constructs a commission request topic of the format \char`\"{}thincloud/registration/\{device\+Type\}\+\_\+\{physical\+Id\}/requests\char`\"{}
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -278,7 +270,7 @@ Length of the constructed string or a negative value on error
 
 Build a commission response topic. 
 
-Constructs a commission response topic of the format\+: "thincloud/registration/\{device\+Type\}\+\_\+\{physical\+Id\}/requests/\{request\+Id\}/response
+Constructs a commission response topic of the format \char`\"{}thincloud/registration/\{device\+Type\}\+\_\+\{physical\+Id\}/requests/\{request\+Id\}/response\char`\"{}
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -470,7 +462,7 @@ Length of the constructed string or a negative value on error
 
 Build a service request topic. 
 
-Constructs a service request topic of the format\+: "thincloud/devices/\{device\+Id\}/requests
+Constructs a service request topic of the format \char`\"{}thincloud/devices/\{device\+Id\}/requests\char`\"{}
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -520,7 +512,7 @@ Zero on success, a negative value otherwise
 
 Build a service response topic. 
 
-Constructs a service response topic of the format\+: "thincloud/devices/\{device\+Id\}/requests/s/response
+Constructs a service response topic of the format \char`\"{}thincloud/devices/\{device\+Id\}/requests/\%s/response\char`\"{}
 
 
 \begin{DoxyParams}[1]{Parameters}

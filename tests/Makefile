@@ -8,13 +8,14 @@ CC = gcc
 DEBUG = @
 
 GREATEST_DIR = greatest
+TC_SDK_DIR = ..
 TEST_DIR = .
-TEST_INCLUDE_DIRS += -I $(TEST_DIR) -I $(GREATEST_DIR)
+TEST_INCLUDE_DIRS += -I $(TEST_DIR) -I $(TC_SDK_DIR)
 TEST_NAME = tests 
 TEST_SRC_FILES = tests.c
 
 #IoT client directory
-IOT_CLIENT_DIR = aws-iot-device-sdk-embedded-C
+IOT_CLIENT_DIR = ../../aws-iot-device-sdk-embedded-C
 
 PLATFORM_DIR = $(IOT_CLIENT_DIR)/platform/linux/mbedtls
 PLATFORM_COMMON_DIR = $(IOT_CLIENT_DIR)/platform/linux/common
@@ -30,7 +31,7 @@ IOT_SRC_FILES += $(shell find $(PLATFORM_DIR) -name '*.c')
 IOT_SRC_FILES += $(shell find $(PLATFORM_COMMON_DIR) -name '*.c')
 
 #TLS - mbedtls
-MBEDTLS_DIR = mbedtls
+MBEDTLS_DIR = $(IOT_CLIENT_DIR)/external_libs/mbedtls
 TLS_LIB_DIR = $(MBEDTLS_DIR)/library
 TLS_INCLUDE_DIR = -I $(MBEDTLS_DIR)/include
 EXTERNAL_LIBS += -L$(TLS_LIB_DIR) 

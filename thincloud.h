@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright 2019 Yonomi, Inc. or its affiliates. All Rights Reserved.
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@
 #define TC_EMBEDDED_C_SDK_VERSION_MINOR 0
 #define TC_EMBEDDED_C_SDK_VERSION_PATCH 0
 
-/**
+/*
  * Thincloud C Embedded SDK
  * 
  * Contains utilities to construct ThinCloud standard topics
@@ -40,8 +40,15 @@
 #include "aws_iot_error.h"
 #include "aws_iot_mqtt_client_interface.h"
 
-#define TC_ID_LENGTH 37      // UUID standard length plus null character
-#define MAX_TOPIC_LENGTH 257 // AWS IoT Max Topic Length plus null character
+/**
+ * UUID standard length plus null character
+ */
+#define TC_ID_LENGTH 37
+
+/**
+ * AWS IoT Max Topic Length plus null character
+ */
+#define MAX_TOPIC_LENGTH 257
 
 #define REQUEST_METHOD_GET "GET"
 #define REQUEST_METHOD_PUT "PUT"
@@ -51,8 +58,8 @@
 /**
  * @brief Build a commission request topic
  * 
- * Constructs a commission request topic of the format:
- *       "thincloud/registration/{deviceType}_{physicalId}/requests
+ * Constructs a commission request topic of the format
+ *       "thincloud/registration/{deviceType}_{physicalId}/requests"
  *
  * @param[out]  buffer      Pointer to a string buffer to write to.
  * @param[in]   deviceType  Devices's device type.
@@ -78,8 +85,8 @@ int commission_request_topic(char *buffer, const char *deviceType, const char *p
 /**
  * @brief Build a commission response topic
  * 
- * Constructs a commission response topic of the format:
- *       "thincloud/registration/{deviceType}_{physicalId}/requests/{requestId}/response
+ * Constructs a commission response topic of the format
+ *       "thincloud/registration/{deviceType}_{physicalId}/requests/{requestId}/response"
  * 
  * @param[out]  buffer      Pointer to a string buffer to write to.
  * @param[in]   deviceType  Devices's device type.
@@ -106,8 +113,8 @@ int commission_response_topic(char *buffer, const char *deviceType, const char *
 /**
  * @brief Build a command request topic
  * 
- * Constructs a command request topic of the format:
- *       "thincloud/devices/{deviceId}/command
+ * Constructs a command request topic of the format
+ *       "thincloud/devices/{deviceId}/command"
  * 
  * @param[out]  buffer    Pointer to a string buffer to write to.
  * @param[in]   deviceId  Device's ID.
@@ -132,8 +139,8 @@ int command_request_topic(char *buffer, const char *deviceId)
 /**
  * @brief Build a command response topic
  * 
- * Constructs a command response topic of the format:
- *       "thincloud/devices/{deviceId}/command/{commandId}/response
+ * Constructs a command response topic of the format
+ *       "thincloud/devices/{deviceId}/command/{commandId}/response"
  * 
  * @param[out]  buffer    Pointer to a string buffer to write to.
  * @param[in]   deviceId  Devices's ID.
@@ -159,8 +166,8 @@ int command_response_topic(char *buffer, const char *deviceId, const char *comma
 /**
  * @brief Build a service request topic
  * 
- * Constructs a service request topic of the format:
- *       "thincloud/devices/{deviceId}/requests
+ * Constructs a service request topic of the format
+ *       "thincloud/devices/{deviceId}/requests"
  * 
  * @param[out]  buffer    Pointer to a string buffer to write to.
  * @param[in]   deviceId  Devices's ID.
@@ -185,8 +192,8 @@ int service_request_topic(char *buffer, const char *deviceId)
 /**
  * @brief Build a service response topic
  * 
- * Constructs a service response topic of the format:
- *       "thincloud/devices/{deviceId}/requests/%s/response
+ * Constructs a service response topic of the format
+ *       "thincloud/devices/{deviceId}/requests/%s/response"
  * 
  * @param[out] buffer     Pointer to a string buffer to write to.
  * @param[in]  deviceId   Devices's ID.

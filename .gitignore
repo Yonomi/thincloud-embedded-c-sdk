@@ -1,5 +1,5 @@
 # Binaries
-tests
+tests/tests
 
 # Prerequisites
 *.d

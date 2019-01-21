@@ -175,6 +175,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>AWS IoT Max Topic Length plus null character </p>
 
 </div>
 </div>
@@ -245,9 +246,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copyright 2019 Yonomi, Inc. or its affiliates. All Rights Reserved.</p>
-<p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at </p><pre class="fragment">http://www.apache.org/licenses/LICENSE-2.0
-</pre><p>Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. </p>
 
 </div>
 </div>
@@ -290,8 +288,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Thincloud C Embedded SDK</p>
-<p>Contains utilities to construct ThinCloud standard topics and marshal and unmarshal request and responses. </p>
+<p>UUID standard length plus null character </p>
 
 </div>
 </div>
@@ -383,7 +380,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Build a command request topic. </p>
-<p>Constructs a command request topic of the format: "thincloud/devices/{deviceId}/command</p>
+<p>Constructs a command request topic of the format "thincloud/devices/{deviceId}/command"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Pointer to a string buffer to write to. </td></tr>
@@ -495,7 +492,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Build a command response topic. </p>
-<p>Constructs a command response topic of the format: "thincloud/devices/{deviceId}/command/{commandId}/response</p>
+<p>Constructs a command response topic of the format "thincloud/devices/{deviceId}/command/{commandId}/response"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Pointer to a string buffer to write to. </td></tr>
@@ -541,7 +538,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Build a commission request topic. </p>
-<p>Constructs a commission request topic of the format: "thincloud/registration/{deviceType}_{physicalId}/requests</p>
+<p>Constructs a commission request topic of the format "thincloud/registration/{deviceType}_{physicalId}/requests"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Pointer to a string buffer to write to. </td></tr>
@@ -593,7 +590,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Build a commission response topic. </p>
-<p>Constructs a commission response topic of the format: "thincloud/registration/{deviceType}_{physicalId}/requests/{requestId}/response</p>
+<p>Constructs a commission response topic of the format "thincloud/registration/{deviceType}_{physicalId}/requests/{requestId}/response"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Pointer to a string buffer to write to. </td></tr>
@@ -987,7 +984,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Build a service request topic. </p>
-<p>Constructs a service request topic of the format: "thincloud/devices/{deviceId}/requests</p>
+<p>Constructs a service request topic of the format "thincloud/devices/{deviceId}/requests"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Pointer to a string buffer to write to. </td></tr>
@@ -1092,7 +1089,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Build a service response topic. </p>
-<p>Constructs a service response topic of the format: "thincloud/devices/{deviceId}/requests/s/response</p>
+<p>Constructs a service response topic of the format "thincloud/devices/{deviceId}/requests/%s/response"</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Pointer to a string buffer to write to. </td></tr>

@@ -1,5 +1,9 @@
 # ThinCloud C Embedded SDK
 
+A header-only helper library for embedded devices wanting to connect to ThinCloud.
+
+Documentation can be found [here](https://yonomi.github.io/thincloud-embedded-c-sdk/docs/html/index.html)
+
 ## Dependencies
 
 - aws-iot-device-sdk-embedded-C
@@ -7,7 +11,9 @@
 
 ## Usage
 
-To use, include thincloud.h in your project and link all dependencies.
+To use, include `thincloud.h` in your project and link all dependencies.
+
+See `Makefile` for an example.
 
 ## Example
 
@@ -62,21 +68,25 @@ int main()
 }
 ```
 
-## Build Tests
-
-```bash
-$ git submodule update --init --recursive
-$ make
-```
-
-## Run Tests
-
-```bash
-$ ./tests
-```
-
 ## Build docs
 
 ```bash
 $ doxygen Doxyfile
+```
+
+## Testing
+
+### Build
+
+```bash
+$ git clone https://github.com/aws/aws-iot-device-sdk-embedded-C
+$ git clone https://github.com/ARMmbed/mbedtls aws-iot-device-sdk-embedded-C/external_libs/mbedtls
+$ cd thincloud-embedded-c-sdk/tests
+$ make
+```
+
+### Run
+
+```bash
+$ ./tests
 ```
