@@ -6,8 +6,8 @@ Documentation can be found [here](https://yonomi.github.io/thincloud-embedded-c-
 
 ## Dependencies
 
-- aws-iot-device-sdk-embedded-C
-- json-c
+- aws-iot-device-sdk-embedded-C (3.0.0)
+- json-c (0.13 or greater)
 
 ## Usage
 
