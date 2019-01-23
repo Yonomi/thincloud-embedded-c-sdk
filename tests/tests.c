@@ -7,13 +7,12 @@ TEST should_build_commission_topic(void)
 {
     char topic[MAX_TOPIC_LENGTH];
 
-    const int rc = commission_request_topic(topic, "lock", "123456");
+    IoT_Error_t rc = commission_request_topic(topic, "lock", "123456");
 
     const char *expectedStr = "thincloud/registration/lock_123456/requests";
-    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
-    ASSERT_EQ(expectedStrLen, rc);
+    ASSERT_EQ(SUCCESS, rc);
 
     PASS();
 }
@@ -32,13 +31,12 @@ TEST should_fail_commission_topic_on_null_inputs(void)
 TEST should_build_commission_response_topic(void)
 {
     char topic[MAX_TOPIC_LENGTH];
-    const int rc = commission_response_topic(topic, "lock", "123456", "123");
+    IoT_Error_t rc = commission_response_topic(topic, "lock", "123456", "123");
 
     const char *expectedStr = "thincloud/registration/lock_123456/requests/123/response";
-    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
-    ASSERT_EQ(expectedStrLen, rc);
+    ASSERT_EQ(SUCCESS, rc);
 
     PASS();
 }
@@ -46,13 +44,12 @@ TEST should_build_commission_response_topic(void)
 TEST should_build_command_request_topic(void)
 {
     char topic[MAX_TOPIC_LENGTH];
-    const int rc = command_request_topic(topic, "123456");
+    IoT_Error_t rc = command_request_topic(topic, "123456");
 
     const char *expectedStr = "thincloud/devices/123456/command";
-    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
-    ASSERT_EQ(expectedStrLen, rc);
+    ASSERT_EQ(SUCCESS, rc);
 
     PASS();
 }
@@ -60,13 +57,12 @@ TEST should_build_command_request_topic(void)
 TEST should_build_command_response_topic(void)
 {
     char topic[MAX_TOPIC_LENGTH];
-    const int rc = command_response_topic(topic, "123456", "7890");
+    IoT_Error_t rc = command_response_topic(topic, "123456", "7890");
 
     const char *expectedStr = "thincloud/devices/123456/command/7890/response";
-    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
-    ASSERT_EQ(expectedStrLen, rc);
+    ASSERT_EQ(SUCCESS, rc);
 
     PASS();
 }
@@ -74,13 +70,12 @@ TEST should_build_command_response_topic(void)
 TEST should_build_service_request_topic(void)
 {
     char topic[MAX_TOPIC_LENGTH];
-    const int rc = service_request_topic(topic, "123456");
+    IoT_Error_t rc = service_request_topic(topic, "123456");
 
     const char *expectedStr = "thincloud/devices/123456/requests";
-    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
-    ASSERT_EQ(expectedStrLen, rc);
+    ASSERT_EQ(SUCCESS, rc);
 
     PASS();
 }
@@ -88,13 +83,12 @@ TEST should_build_service_request_topic(void)
 TEST should_build_service_response_topic(void)
 {
     char topic[MAX_TOPIC_LENGTH];
-    const int rc = service_response_topic(topic, "123456", "7890");
+    IoT_Error_t rc = service_response_topic(topic, "123456", "7890");
 
     const char *expectedStr = "thincloud/devices/123456/requests/7890/response";
-    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, topic);
-    ASSERT_EQ(expectedStrLen, rc);
+    ASSERT_EQ(SUCCESS, rc);
 
     PASS();
 }
@@ -102,14 +96,12 @@ TEST should_build_service_response_topic(void)
 TEST should_build_commission_request(void)
 {
     char buffer[256];
-
-    const int rc = commissioning_request(buffer, "1234", "lock", "5678");
+    IoT_Error_t rc = commissioning_request(buffer, "1234", "lock", "5678");
 
     const char *expectedStr = "{\"id\":\"1234\",\"method\":\"commission\",\"params\":{\"data\":{\"deviceType\":\"lock\",\"physicalId\":\"5678\"}}}";
-    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, buffer);
-    ASSERT_EQ(expectedStrLen, rc);
+    ASSERT_EQ(SUCCESS, rc);
 
     PASS();
 }
@@ -122,13 +114,12 @@ TEST should_build_command_response(void)
     json_object *bar = json_object_new_string("bar");
     json_object_object_add(body, "foo", bar);
 
-    const int rc = command_response(buffer, "1234", 200, false, NULL, body);
+    IoT_Error_t rc = command_response(buffer, "1234", 200, false, NULL, body);
 
     const char *expectedStr = "{\"id\":\"1234\",\"result\":{\"statusCode\":200,\"body\":{\"foo\":\"bar\"}}}";
-    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, buffer);
-    ASSERT_EQ(expectedStrLen, rc);
+    ASSERT_EQ(SUCCESS, rc);
 
     PASS();
 }
@@ -141,13 +132,12 @@ TEST should_build_service_request(void)
     json_object *bar = json_object_new_string("bar");
     json_object_object_add(params, "foo", bar);
 
-    const int rc = service_request(buffer, "1234", REQUEST_METHOD_GET, params);
+    IoT_Error_t rc = service_request(buffer, "1234", REQUEST_METHOD_GET, params);
 
     const char *expectedStr = "{\"id\":\"1234\",\"method\":\"GET\",\"params\":{\"foo\":\"bar\"}}";
-    const int expectedStrLen = strlen(expectedStr);
 
     ASSERT_STR_EQ(expectedStr, buffer);
-    ASSERT_EQ(expectedStrLen, rc);
+    ASSERT_EQ(SUCCESS, rc);
 
     PASS();
 }

@@ -17,10 +17,10 @@
 #ifndef THINCLOUD_EMBEDDED_C_SDK_
 #define THINCLOUD_EMBEDDED_C_SDK_
 
-/* 1.0.0 */
+/* 1.0.1 */
 #define TC_EMBEDDED_C_SDK_VERSION_MAJOR 1
 #define TC_EMBEDDED_C_SDK_VERSION_MINOR 0
-#define TC_EMBEDDED_C_SDK_VERSION_PATCH 0
+#define TC_EMBEDDED_C_SDK_VERSION_PATCH 1
 
 /*
  * Thincloud C Embedded SDK
@@ -65,9 +65,9 @@
  * @param[in]   deviceType  Devices's device type.
  * @param[in]   physicalId  Device's physical ID.
  * 
- * @return Length of the constructed string or a negative value on error
+ * @return Zero on success, negative value otherwise 
  */
-int commission_request_topic(char *buffer, const char *deviceType, const char *physicalId)
+IoT_Error_t commission_request_topic(char *buffer, const char *deviceType, const char *physicalId)
 {
     if (buffer == NULL)
     {
@@ -79,7 +79,9 @@ int commission_request_topic(char *buffer, const char *deviceType, const char *p
         FUNC_EXIT_RC(NULL_VALUE_ERROR);
     }
 
-    return sprintf(buffer, "thincloud/registration/%s_%s/requests", deviceType, physicalId);
+    sprintf(buffer, "thincloud/registration/%s_%s/requests", deviceType, physicalId);
+
+    FUNC_EXIT_RC(SUCCESS);
 }
 
 /**
@@ -93,9 +95,9 @@ int commission_request_topic(char *buffer, const char *deviceType, const char *p
  * @param[in]   physicalId  Device's physical ID.
  * @param[in]   requestId   Unique ID for the request.
  * 
- * @return Length of the constructed string or a negative value on error
+ * @return Zero on success, negative value otherwise 
  */
-int commission_response_topic(char *buffer, const char *deviceType, const char *physicalId, const char *requestId)
+IoT_Error_t commission_response_topic(char *buffer, const char *deviceType, const char *physicalId, const char *requestId)
 {
     if (buffer == NULL)
     {
@@ -107,7 +109,9 @@ int commission_response_topic(char *buffer, const char *deviceType, const char *
         FUNC_EXIT_RC(NULL_VALUE_ERROR);
     }
 
-    return sprintf(buffer, "thincloud/registration/%s_%s/requests/%s/response", deviceType, physicalId, requestId);
+    sprintf(buffer, "thincloud/registration/%s_%s/requests/%s/response", deviceType, physicalId, requestId);
+
+    FUNC_EXIT_RC(SUCCESS);
 }
 
 /**
@@ -119,9 +123,9 @@ int commission_response_topic(char *buffer, const char *deviceType, const char *
  * @param[out]  buffer    Pointer to a string buffer to write to.
  * @param[in]   deviceId  Device's ID.
  * 
- * @return Length of the constructed string or a negative value on error
+ * @return Zero on success, negative value otherwise 
  */
-int command_request_topic(char *buffer, const char *deviceId)
+IoT_Error_t command_request_topic(char *buffer, const char *deviceId)
 {
     if (buffer == NULL)
     {
@@ -133,7 +137,9 @@ int command_request_topic(char *buffer, const char *deviceId)
         FUNC_EXIT_RC(NULL_VALUE_ERROR);
     }
 
-    return sprintf(buffer, "thincloud/devices/%s/command", deviceId);
+    sprintf(buffer, "thincloud/devices/%s/command", deviceId);
+
+    FUNC_EXIT_RC(SUCCESS);
 }
 
 /**
@@ -146,9 +152,9 @@ int command_request_topic(char *buffer, const char *deviceId)
  * @param[in]   deviceId  Devices's ID.
  * @param[in]   deviceId  Command request's ID.
  * 
- * @return Length of the constructed string or a negative value on error
+ * @return Zero on success, negative value otherwise 
  */
-int command_response_topic(char *buffer, const char *deviceId, const char *commandId)
+IoT_Error_t command_response_topic(char *buffer, const char *deviceId, const char *commandId)
 {
     if (buffer == NULL)
     {
@@ -160,7 +166,9 @@ int command_response_topic(char *buffer, const char *deviceId, const char *comma
         FUNC_EXIT_RC(NULL_VALUE_ERROR);
     }
 
-    return sprintf(buffer, "thincloud/devices/%s/command/%s/response", deviceId, commandId);
+    sprintf(buffer, "thincloud/devices/%s/command/%s/response", deviceId, commandId);
+
+    FUNC_EXIT_RC(SUCCESS);
 }
 
 /**
@@ -172,9 +180,9 @@ int command_response_topic(char *buffer, const char *deviceId, const char *comma
  * @param[out]  buffer    Pointer to a string buffer to write to.
  * @param[in]   deviceId  Devices's ID.
  * 
- * @return Length of the constructed string or a negative value on error
+ * @return Zero on success, negative value otherwise 
  */
-int service_request_topic(char *buffer, const char *deviceId)
+IoT_Error_t service_request_topic(char *buffer, const char *deviceId)
 {
     if (buffer == NULL)
     {
@@ -186,7 +194,9 @@ int service_request_topic(char *buffer, const char *deviceId)
         FUNC_EXIT_RC(NULL_VALUE_ERROR);
     }
 
-    return sprintf(buffer, "thincloud/devices/%s/requests", deviceId);
+    sprintf(buffer, "thincloud/devices/%s/requests", deviceId);
+
+    FUNC_EXIT_RC(SUCCESS);
 }
 
 /**
@@ -199,9 +209,9 @@ int service_request_topic(char *buffer, const char *deviceId)
  * @param[in]  deviceId   Devices's ID.
  * @param[in]  requestId  Request's ID.
  * 
- * @return Length of the constructed string or a negative value on error
+ * @return Zero on success, negative value otherwise 
  */
-int service_response_topic(char *buffer, const char *deviceId, const char *requestId)
+IoT_Error_t service_response_topic(char *buffer, const char *deviceId, const char *requestId)
 {
     if (buffer == NULL)
     {
@@ -213,7 +223,9 @@ int service_response_topic(char *buffer, const char *deviceId, const char *reque
         FUNC_EXIT_RC(NULL_VALUE_ERROR);
     }
 
-    return sprintf(buffer, "thincloud/devices/%s/requests/%s/response", deviceId, requestId);
+    sprintf(buffer, "thincloud/devices/%s/requests/%s/response", deviceId, requestId);
+
+    FUNC_EXIT_RC(SUCCESS);
 }
 
 /**
@@ -226,9 +238,9 @@ int service_response_topic(char *buffer, const char *deviceId, const char *reque
  * @param[in]  deviceType  Requesting device's type
  * @param[in]  physicalId  Device's physical ID
  * 
- * @return Length of the constructed payload or a negative value on error
+ * @return Zero on success, negative value otherwise 
  */
-int commissioning_request(char *buffer, const char *requestId, const char *deviceType, const char *physicalId)
+IoT_Error_t commissioning_request(char *buffer, const char *requestId, const char *deviceType, const char *physicalId)
 {
     if (deviceType == NULL || physicalId == NULL)
     {
@@ -263,7 +275,7 @@ int commissioning_request(char *buffer, const char *requestId, const char *devic
 
     json_object_put(obj);
 
-    return strlen(buffer);
+    FUNC_EXIT_RC(SUCCESS);
 }
 
 /**
@@ -340,9 +352,9 @@ IoT_Error_t commissioning_response(char *deviceId, uint16_t *statusCode, char *r
  * @param[in]   errorMessage     Response error message. Only used if isErrorResponse is set to true.
  * @param[in]   body             Command response body.
  * 
- * @return Length of the constructed payload or a negative value on error
+ * @return Zero on success, a negative value otherwise 
  */
-int command_response(char *buffer, const char *requestId, uint16_t statusCode, bool isErrorResponse, char *errorMessage, json_object *body)
+IoT_Error_t command_response(char *buffer, const char *requestId, uint16_t statusCode, bool isErrorResponse, char *errorMessage, json_object *body)
 {
     json_object *obj = json_object_new_object();
     if (requestId != NULL)
@@ -384,7 +396,7 @@ int command_response(char *buffer, const char *requestId, uint16_t statusCode, b
 
     json_object_put(obj);
 
-    return strlen(buffer);
+    FUNC_EXIT_RC(SUCCESS);
 }
 
 /**
@@ -460,9 +472,9 @@ IoT_Error_t command_request(char *requestId, char *method, json_object **params,
  * @param[in]   method     Service method to request.
  * @param[in]   params     Service request parameters.
  * 
- * @return Length of the constructed string or a negative value on error
+ * @return Zero on success, a negative value otherwise 
  */
-int service_request(char *buffer, const char *requestId, const char *method, json_object *params)
+IoT_Error_t service_request(char *buffer, const char *requestId, const char *method, json_object *params)
 {
     json_object *obj = json_object_new_object();
     if (requestId != NULL)
@@ -485,7 +497,7 @@ int service_request(char *buffer, const char *requestId, const char *method, jso
 
     json_object_put(obj);
 
-    return strlen(buffer);
+    FUNC_EXIT_RC(SUCCESS);
 }
 
 /**

@@ -85,7 +85,7 @@ Macros</h2></td></tr>
 <tr class="separator:a64fa8ab71ee14902ffcd211ba72efc0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeacc51b5a718d3c684016049a5ecb9a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#aeacc51b5a718d3c684016049a5ecb9a1">TC_EMBEDDED_C_SDK_VERSION_MINOR</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:aeacc51b5a718d3c684016049a5ecb9a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52c7ee7fc828158eeae9efe074ac4604"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a52c7ee7fc828158eeae9efe074ac4604">TC_EMBEDDED_C_SDK_VERSION_PATCH</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:a52c7ee7fc828158eeae9efe074ac4604"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a52c7ee7fc828158eeae9efe074ac4604">TC_EMBEDDED_C_SDK_VERSION_PATCH</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a52c7ee7fc828158eeae9efe074ac4604"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f50e6165c50b7b13bcd5a7f7be4ea59"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a8f50e6165c50b7b13bcd5a7f7be4ea59">TC_ID_LENGTH</a>&#160;&#160;&#160;37</td></tr>
 <tr class="separator:a8f50e6165c50b7b13bcd5a7f7be4ea59"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,39 +102,39 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:afb317c6af279731fbde4352fdab49143"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#afb317c6af279731fbde4352fdab49143">commission_request_topic</a> (char *buffer, const char *deviceType, const char *physicalId)</td></tr>
-<tr class="memdesc:afb317c6af279731fbde4352fdab49143"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a commission request topic.  <a href="#afb317c6af279731fbde4352fdab49143">More...</a><br /></td></tr>
-<tr class="separator:afb317c6af279731fbde4352fdab49143"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6bc0ec274f18d20093ac1dd067292ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#ae6bc0ec274f18d20093ac1dd067292ff">commission_response_topic</a> (char *buffer, const char *deviceType, const char *physicalId, const char *requestId)</td></tr>
-<tr class="memdesc:ae6bc0ec274f18d20093ac1dd067292ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a commission response topic.  <a href="#ae6bc0ec274f18d20093ac1dd067292ff">More...</a><br /></td></tr>
-<tr class="separator:ae6bc0ec274f18d20093ac1dd067292ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4ebbbc9590652d3e1df1328af53fc4d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#ac4ebbbc9590652d3e1df1328af53fc4d">command_request_topic</a> (char *buffer, const char *deviceId)</td></tr>
-<tr class="memdesc:ac4ebbbc9590652d3e1df1328af53fc4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a command request topic.  <a href="#ac4ebbbc9590652d3e1df1328af53fc4d">More...</a><br /></td></tr>
-<tr class="separator:ac4ebbbc9590652d3e1df1328af53fc4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7bccd2c5f099a36f8c68df9a2f34dc3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#ae7bccd2c5f099a36f8c68df9a2f34dc3">command_response_topic</a> (char *buffer, const char *deviceId, const char *commandId)</td></tr>
-<tr class="memdesc:ae7bccd2c5f099a36f8c68df9a2f34dc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a command response topic.  <a href="#ae7bccd2c5f099a36f8c68df9a2f34dc3">More...</a><br /></td></tr>
-<tr class="separator:ae7bccd2c5f099a36f8c68df9a2f34dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f6490d44d7521c47df22a557d69af85"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a8f6490d44d7521c47df22a557d69af85">service_request_topic</a> (char *buffer, const char *deviceId)</td></tr>
-<tr class="memdesc:a8f6490d44d7521c47df22a557d69af85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a service request topic.  <a href="#a8f6490d44d7521c47df22a557d69af85">More...</a><br /></td></tr>
-<tr class="separator:a8f6490d44d7521c47df22a557d69af85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abad67cde59183ff29b08c8909b3ee3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#abad67cde59183ff29b08c8909b3ee3d4">service_response_topic</a> (char *buffer, const char *deviceId, const char *requestId)</td></tr>
-<tr class="memdesc:abad67cde59183ff29b08c8909b3ee3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a service response topic.  <a href="#abad67cde59183ff29b08c8909b3ee3d4">More...</a><br /></td></tr>
-<tr class="separator:abad67cde59183ff29b08c8909b3ee3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeccf99af96aa095ea4e41128a75cd197"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#aeccf99af96aa095ea4e41128a75cd197">commissioning_request</a> (char *buffer, const char *requestId, const char *deviceType, const char *physicalId)</td></tr>
-<tr class="memdesc:aeccf99af96aa095ea4e41128a75cd197"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a commissioning request.  <a href="#aeccf99af96aa095ea4e41128a75cd197">More...</a><br /></td></tr>
-<tr class="separator:aeccf99af96aa095ea4e41128a75cd197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9c04c89867861008ea65b303a5706a2"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#ac9c04c89867861008ea65b303a5706a2">commission_request_topic</a> (char *buffer, const char *deviceType, const char *physicalId)</td></tr>
+<tr class="memdesc:ac9c04c89867861008ea65b303a5706a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a commission request topic.  <a href="#ac9c04c89867861008ea65b303a5706a2">More...</a><br /></td></tr>
+<tr class="separator:ac9c04c89867861008ea65b303a5706a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af55b966de98a304be48ec6a60dfb5f8b"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#af55b966de98a304be48ec6a60dfb5f8b">commission_response_topic</a> (char *buffer, const char *deviceType, const char *physicalId, const char *requestId)</td></tr>
+<tr class="memdesc:af55b966de98a304be48ec6a60dfb5f8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a commission response topic.  <a href="#af55b966de98a304be48ec6a60dfb5f8b">More...</a><br /></td></tr>
+<tr class="separator:af55b966de98a304be48ec6a60dfb5f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a336a16c97f45fc3daf5a735bae409afc"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a336a16c97f45fc3daf5a735bae409afc">command_request_topic</a> (char *buffer, const char *deviceId)</td></tr>
+<tr class="memdesc:a336a16c97f45fc3daf5a735bae409afc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a command request topic.  <a href="#a336a16c97f45fc3daf5a735bae409afc">More...</a><br /></td></tr>
+<tr class="separator:a336a16c97f45fc3daf5a735bae409afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dead82b23c44ee52f8632e7c30f55f4"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a2dead82b23c44ee52f8632e7c30f55f4">command_response_topic</a> (char *buffer, const char *deviceId, const char *commandId)</td></tr>
+<tr class="memdesc:a2dead82b23c44ee52f8632e7c30f55f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a command response topic.  <a href="#a2dead82b23c44ee52f8632e7c30f55f4">More...</a><br /></td></tr>
+<tr class="separator:a2dead82b23c44ee52f8632e7c30f55f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9486e2405ce1232bdb1b0c1dab8868b2"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a9486e2405ce1232bdb1b0c1dab8868b2">service_request_topic</a> (char *buffer, const char *deviceId)</td></tr>
+<tr class="memdesc:a9486e2405ce1232bdb1b0c1dab8868b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a service request topic.  <a href="#a9486e2405ce1232bdb1b0c1dab8868b2">More...</a><br /></td></tr>
+<tr class="separator:a9486e2405ce1232bdb1b0c1dab8868b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abafe8f815b7a9ebad85ca59352a1ac24"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#abafe8f815b7a9ebad85ca59352a1ac24">service_response_topic</a> (char *buffer, const char *deviceId, const char *requestId)</td></tr>
+<tr class="memdesc:abafe8f815b7a9ebad85ca59352a1ac24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a service response topic.  <a href="#abafe8f815b7a9ebad85ca59352a1ac24">More...</a><br /></td></tr>
+<tr class="separator:abafe8f815b7a9ebad85ca59352a1ac24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36f482dd6c121b1d7c117f8fc9d0db3e"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a36f482dd6c121b1d7c117f8fc9d0db3e">commissioning_request</a> (char *buffer, const char *requestId, const char *deviceType, const char *physicalId)</td></tr>
+<tr class="memdesc:a36f482dd6c121b1d7c117f8fc9d0db3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a commissioning request.  <a href="#a36f482dd6c121b1d7c117f8fc9d0db3e">More...</a><br /></td></tr>
+<tr class="separator:a36f482dd6c121b1d7c117f8fc9d0db3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f8937ca07466ed1fc060c967b8171ed"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a3f8937ca07466ed1fc060c967b8171ed">commissioning_response</a> (char *deviceId, uint16_t *statusCode, char *requestId, char *payload, uint16_t payloadLen)</td></tr>
 <tr class="memdesc:a3f8937ca07466ed1fc060c967b8171ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unmarshall a commissioning response.  <a href="#a3f8937ca07466ed1fc060c967b8171ed">More...</a><br /></td></tr>
 <tr class="separator:a3f8937ca07466ed1fc060c967b8171ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98b5cb85b0885dc2ad88e5446b4ba052"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a98b5cb85b0885dc2ad88e5446b4ba052">command_response</a> (char *buffer, const char *requestId, uint16_t statusCode, bool isErrorResponse, char *errorMessage, json_object *body)</td></tr>
-<tr class="memdesc:a98b5cb85b0885dc2ad88e5446b4ba052"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marshal a command response.  <a href="#a98b5cb85b0885dc2ad88e5446b4ba052">More...</a><br /></td></tr>
-<tr class="separator:a98b5cb85b0885dc2ad88e5446b4ba052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af38978e3eecc5b77216a0cbc4c30d17e"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#af38978e3eecc5b77216a0cbc4c30d17e">command_response</a> (char *buffer, const char *requestId, uint16_t statusCode, bool isErrorResponse, char *errorMessage, json_object *body)</td></tr>
+<tr class="memdesc:af38978e3eecc5b77216a0cbc4c30d17e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marshal a command response.  <a href="#af38978e3eecc5b77216a0cbc4c30d17e">More...</a><br /></td></tr>
+<tr class="separator:af38978e3eecc5b77216a0cbc4c30d17e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a711278c6103ad80ac0c557fefa94a32f"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a711278c6103ad80ac0c557fefa94a32f">command_request</a> (char *requestId, char *method, json_object **params, const char *payload, const unsigned int payloadLen)</td></tr>
 <tr class="memdesc:a711278c6103ad80ac0c557fefa94a32f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unmarshall a command request payload.  <a href="#a711278c6103ad80ac0c557fefa94a32f">More...</a><br /></td></tr>
 <tr class="separator:a711278c6103ad80ac0c557fefa94a32f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb9364e8c6bb9e6d1a4cd14b4409b5f9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#afb9364e8c6bb9e6d1a4cd14b4409b5f9">service_request</a> (char *buffer, const char *requestId, const char *method, json_object *params)</td></tr>
-<tr class="memdesc:afb9364e8c6bb9e6d1a4cd14b4409b5f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marshal a service request.  <a href="#afb9364e8c6bb9e6d1a4cd14b4409b5f9">More...</a><br /></td></tr>
-<tr class="separator:afb9364e8c6bb9e6d1a4cd14b4409b5f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83d2fe46653c1e27c47e5236d898d1f5"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a83d2fe46653c1e27c47e5236d898d1f5">service_request</a> (char *buffer, const char *requestId, const char *method, json_object *params)</td></tr>
+<tr class="memdesc:a83d2fe46653c1e27c47e5236d898d1f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Marshal a service request.  <a href="#a83d2fe46653c1e27c47e5236d898d1f5">More...</a><br /></td></tr>
+<tr class="separator:a83d2fe46653c1e27c47e5236d898d1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8c707008750cf2af4f74eda41f1372d"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#af8c707008750cf2af4f74eda41f1372d">service_response</a> (char *requestId, uint16_t *statusCode, json_object **data, const char *payload, const unsigned int payloadLen)</td></tr>
 <tr class="memdesc:af8c707008750cf2af4f74eda41f1372d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unmarshall a service response payload.  <a href="#af8c707008750cf2af4f74eda41f1372d">More...</a><br /></td></tr>
 <tr class="separator:af8c707008750cf2af4f74eda41f1372d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -270,7 +270,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TC_EMBEDDED_C_SDK_VERSION_PATCH&#160;&#160;&#160;0</td>
+          <td class="memname">#define TC_EMBEDDED_C_SDK_VERSION_PATCH&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -353,14 +353,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac4ebbbc9590652d3e1df1328af53fc4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4ebbbc9590652d3e1df1328af53fc4d">&#9670;&nbsp;</a></span>command_request_topic()</h2>
+<a id="a336a16c97f45fc3daf5a735bae409afc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a336a16c97f45fc3daf5a735bae409afc">&#9670;&nbsp;</a></span>command_request_topic()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int command_request_topic </td>
+          <td class="memname">IoT_Error_t command_request_topic </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -388,18 +388,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Length of the constructed string or a negative value on error </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, negative value otherwise </dd></dl>
 
 </div>
 </div>
-<a id="a98b5cb85b0885dc2ad88e5446b4ba052"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98b5cb85b0885dc2ad88e5446b4ba052">&#9670;&nbsp;</a></span>command_response()</h2>
+<a id="af38978e3eecc5b77216a0cbc4c30d17e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af38978e3eecc5b77216a0cbc4c30d17e">&#9670;&nbsp;</a></span>command_response()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int command_response </td>
+          <td class="memname">IoT_Error_t command_response </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -455,18 +455,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Length of the constructed payload or a negative value on error </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, a negative value otherwise </dd></dl>
 
 </div>
 </div>
-<a id="ae7bccd2c5f099a36f8c68df9a2f34dc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7bccd2c5f099a36f8c68df9a2f34dc3">&#9670;&nbsp;</a></span>command_response_topic()</h2>
+<a id="a2dead82b23c44ee52f8632e7c30f55f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dead82b23c44ee52f8632e7c30f55f4">&#9670;&nbsp;</a></span>command_response_topic()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int command_response_topic </td>
+          <td class="memname">IoT_Error_t command_response_topic </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -501,18 +501,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Length of the constructed string or a negative value on error </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, negative value otherwise </dd></dl>
 
 </div>
 </div>
-<a id="afb317c6af279731fbde4352fdab49143"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb317c6af279731fbde4352fdab49143">&#9670;&nbsp;</a></span>commission_request_topic()</h2>
+<a id="ac9c04c89867861008ea65b303a5706a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9c04c89867861008ea65b303a5706a2">&#9670;&nbsp;</a></span>commission_request_topic()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int commission_request_topic </td>
+          <td class="memname">IoT_Error_t commission_request_topic </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -547,18 +547,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Length of the constructed string or a negative value on error </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, negative value otherwise </dd></dl>
 
 </div>
 </div>
-<a id="ae6bc0ec274f18d20093ac1dd067292ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6bc0ec274f18d20093ac1dd067292ff">&#9670;&nbsp;</a></span>commission_response_topic()</h2>
+<a id="af55b966de98a304be48ec6a60dfb5f8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af55b966de98a304be48ec6a60dfb5f8b">&#9670;&nbsp;</a></span>commission_response_topic()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int commission_response_topic </td>
+          <td class="memname">IoT_Error_t commission_response_topic </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -600,18 +600,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Length of the constructed string or a negative value on error </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, negative value otherwise </dd></dl>
 
 </div>
 </div>
-<a id="aeccf99af96aa095ea4e41128a75cd197"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeccf99af96aa095ea4e41128a75cd197">&#9670;&nbsp;</a></span>commissioning_request()</h2>
+<a id="a36f482dd6c121b1d7c117f8fc9d0db3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36f482dd6c121b1d7c117f8fc9d0db3e">&#9670;&nbsp;</a></span>commissioning_request()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int commissioning_request </td>
+          <td class="memname">IoT_Error_t commissioning_request </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -653,7 +653,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Length of the constructed payload or a negative value on error </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, negative value otherwise </dd></dl>
 
 </div>
 </div>
@@ -904,14 +904,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afb9364e8c6bb9e6d1a4cd14b4409b5f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb9364e8c6bb9e6d1a4cd14b4409b5f9">&#9670;&nbsp;</a></span>service_request()</h2>
+<a id="a83d2fe46653c1e27c47e5236d898d1f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83d2fe46653c1e27c47e5236d898d1f5">&#9670;&nbsp;</a></span>service_request()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int service_request </td>
+          <td class="memname">IoT_Error_t service_request </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -953,18 +953,18 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Length of the constructed string or a negative value on error </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, a negative value otherwise </dd></dl>
 
 </div>
 </div>
-<a id="a8f6490d44d7521c47df22a557d69af85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f6490d44d7521c47df22a557d69af85">&#9670;&nbsp;</a></span>service_request_topic()</h2>
+<a id="a9486e2405ce1232bdb1b0c1dab8868b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9486e2405ce1232bdb1b0c1dab8868b2">&#9670;&nbsp;</a></span>service_request_topic()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int service_request_topic </td>
+          <td class="memname">IoT_Error_t service_request_topic </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -992,7 +992,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Length of the constructed string or a negative value on error </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, negative value otherwise </dd></dl>
 
 </div>
 </div>
@@ -1056,14 +1056,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abad67cde59183ff29b08c8909b3ee3d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abad67cde59183ff29b08c8909b3ee3d4">&#9670;&nbsp;</a></span>service_response_topic()</h2>
+<a id="abafe8f815b7a9ebad85ca59352a1ac24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abafe8f815b7a9ebad85ca59352a1ac24">&#9670;&nbsp;</a></span>service_response_topic()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int service_response_topic </td>
+          <td class="memname">IoT_Error_t service_response_topic </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buffer</em>, </td>
@@ -1098,7 +1098,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Length of the constructed string or a negative value on error </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Zero on success, negative value otherwise </dd></dl>
 
 </div>
 </div>
