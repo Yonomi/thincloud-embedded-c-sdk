@@ -2,7 +2,7 @@
 
 A header-only helper library for embedded devices wanting to connect to ThinCloud.
 
-Documentation can be found [here](https://yonomi.github.io/thincloud-embedded-c-sdk/html/index.html)
+Documentation can be found [here](https://yonomi.github.io/thincloud-embedded-c-sdk/html/thincloud_8h.html)
 
 ## Dependencies
 
@@ -20,6 +20,8 @@ See `Makefile` for an example.
 ```c
 #include "thincloud.h"
 
+static bool isCommissioned = false;
+
 static void subscribe_callback_handler(
     AWS_IoT_Client *client,
     char *topicName,
@@ -29,7 +31,7 @@ static void subscribe_callback_handler(
     )
 {
     /* Handle responses */
-    exit(0);
+    isCommissioned = true;
 }
 
 int main()
@@ -52,8 +54,7 @@ int main()
 
     rc = subscribe_to_commissioning_response(&client, "1235", "lock", "85599", subscribe_callback_handler, NULL);
 
-    while((NETWORK_ATTEMPTING_RECONNECT == rc || NETWORK_RECONNECTED == rc || SUCCESS == rc)
-            && (publishCount > 0 || infinitePublishFlag))
+    while((NETWORK_ATTEMPTING_RECONNECT == rc || NETWORK_RECONNECTED == rc || SUCCESS == rc))
     {
         rc = aws_iot_mqtt_yield(&client, 100);
         if(NETWORK_ATTEMPTING_RECONNECT == rc)
@@ -61,7 +62,9 @@ int main()
             continue;
         }
 
-        rc = send_commissioning_request(&client, "1235", "lock", "85599");
+        if (!isCommissioned) {
+            rc = send_commissioning_request(&client, "1235", "lock", "85599");
+        }
     }
 
     return 0;
