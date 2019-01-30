@@ -20,7 +20,7 @@
 /* 1.0.1 */
 #define TC_EMBEDDED_C_SDK_VERSION_MAJOR 1
 #define TC_EMBEDDED_C_SDK_VERSION_MINOR 0
-#define TC_EMBEDDED_C_SDK_VERSION_PATCH 1
+#define TC_EMBEDDED_C_SDK_VERSION_PATCH 2
 
 /*
  * Thincloud C Embedded SDK
@@ -150,7 +150,7 @@ IoT_Error_t command_request_topic(char *buffer, const char *deviceId)
  * 
  * @param[out]  buffer    Pointer to a string buffer to write to.
  * @param[in]   deviceId  Devices's ID.
- * @param[in]   deviceId  Command request's ID.
+ * @param[in]   commandId  Command request's ID.
  * 
  * @return Zero on success, negative value otherwise 
  */
@@ -583,15 +583,15 @@ IoT_Error_t send_command_response(AWS_IoT_Client *client, const char *deviceId, 
 {
     char topic[MAX_TOPIC_LENGTH];
 
-    int topicLen = command_response_topic(topic, deviceId, commandId);
-    if (topicLen <= 0)
+    IoT_Error_t rc = command_response_topic(topic, deviceId, commandId);
+    if (rc != SUCCESS)
     {
-        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+        FUNC_EXIT_RC(rc);
     }
 
     char payload[MAX_JSON_TOKEN_EXPECTED];
 
-    IoT_Error_t rc = command_response(payload, commandId, statusCode, isErrorResponse, errorMessage, body);
+    rc = command_response(payload, commandId, statusCode, isErrorResponse, errorMessage, body);
 
     if (rc != SUCCESS)
     {
@@ -604,7 +604,7 @@ IoT_Error_t send_command_response(AWS_IoT_Client *client, const char *deviceId, 
     params.payload = (void *)payload;
     params.payloadLen = strlen(payload);
 
-    return aws_iot_mqtt_publish(client, topic, topicLen, &params);
+    return aws_iot_mqtt_publish(client, topic, strlen(topic), &params);
 }
 
 /**
@@ -623,16 +623,15 @@ IoT_Error_t send_commissioning_request(AWS_IoT_Client *client, const char *reque
 {
     char topic[MAX_TOPIC_LENGTH];
 
-    int topicLen = commission_request_topic(topic, deviceType, physicalId);
-
-    if (topicLen <= 0)
+    IoT_Error_t rc = commission_request_topic(topic, deviceType, physicalId);
+    if (rc != SUCCESS)
     {
-        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+        FUNC_EXIT_RC(rc);
     }
 
     char payload[MAX_JSON_TOKEN_EXPECTED];
 
-    IoT_Error_t rc = commissioning_request(payload, requestId, deviceType, physicalId);
+    rc = commissioning_request(payload, requestId, deviceType, physicalId);
 
     if (rc != SUCCESS)
     {
@@ -645,7 +644,7 @@ IoT_Error_t send_commissioning_request(AWS_IoT_Client *client, const char *reque
     params.payload = (void *)payload;
     params.payloadLen = strlen(payload);
 
-    return aws_iot_mqtt_publish(client, topic, topicLen, &params);
+    return aws_iot_mqtt_publish(client, topic, strlen(topic), &params);
 }
 
 /**
@@ -665,16 +664,16 @@ IoT_Error_t send_service_request(AWS_IoT_Client *client, const char *requestId, 
 {
     char topic[MAX_TOPIC_LENGTH];
 
-    int topicLen = service_request_topic(topic, deviceId);
+    IoT_Error_t rc = service_request_topic(topic, deviceId);
 
-    if (topicLen <= 0)
+    if (rc != SUCCESS)
     {
-        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+        FUNC_EXIT_RC(rc);
     }
 
     char payload[MAX_JSON_TOKEN_EXPECTED];
 
-    IoT_Error_t rc = service_request(payload, requestId, method, reqParams);
+    rc = service_request(payload, requestId, method, reqParams);
 
     if (rc != SUCCESS)
     {
@@ -687,7 +686,7 @@ IoT_Error_t send_service_request(AWS_IoT_Client *client, const char *requestId, 
     params.payload = (void *)payload;
     params.payloadLen = strlen(payload);
 
-    return aws_iot_mqtt_publish(client, topic, topicLen, &params);
+    return aws_iot_mqtt_publish(client, topic, strlen(topic), &params);
 }
 
 /**
@@ -706,14 +705,14 @@ IoT_Error_t subscribe_to_commissioning_response(AWS_IoT_Client *client, const ch
 {
     char topic[MAX_TOPIC_LENGTH];
 
-    int topicLen = commission_response_topic(topic, deviceType, physicalId, requestId);
+    IoT_Error_t rc = commission_response_topic(topic, deviceType, physicalId, requestId);
 
-    if (topicLen <= 0)
+    if (rc != SUCCESS)
     {
-        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+        FUNC_EXIT_RC(rc);
     }
 
-    return aws_iot_mqtt_subscribe(client, topic, topicLen, QOS0, handler, subscribeData);
+    return aws_iot_mqtt_subscribe(client, topic, strlen(topic), QOS0, handler, subscribeData);
 }
 
 /**
@@ -730,14 +729,14 @@ IoT_Error_t subscribe_to_command_request(AWS_IoT_Client *client, const char *dev
 {
     char topic[MAX_TOPIC_LENGTH];
 
-    int topicLen = command_request_topic(topic, deviceId);
+    IoT_Error_t rc = command_request_topic(topic, deviceId);
 
-    if (topicLen <= 0)
+    if (rc != SUCCESS)
     {
-        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+        FUNC_EXIT_RC(rc);
     }
 
-    return aws_iot_mqtt_subscribe(client, topic, topicLen, QOS0, handler, subscribeData);
+    return aws_iot_mqtt_subscribe(client, topic, strlen(topic), QOS0, handler, subscribeData);
 }
 
 /**
@@ -755,14 +754,14 @@ IoT_Error_t subscribe_to_service_response(AWS_IoT_Client *client, const char *de
 {
     char topic[MAX_TOPIC_LENGTH];
 
-    int topicLen = service_response_topic(topic, deviceId, requestId);
+    IoT_Error_t rc = service_response_topic(topic, deviceId, requestId);
 
-    if (topicLen <= 0)
+    if (rc != SUCCESS)
     {
-        FUNC_EXIT_RC(INVALID_TOPIC_TYPE_ERROR);
+        FUNC_EXIT_RC(rc);
     }
 
-    return aws_iot_mqtt_subscribe(client, topic, topicLen, QOS0, handler, subscribeData);
+    return aws_iot_mqtt_subscribe(client, topic, strlen(topic), QOS0, handler, subscribeData);
 }
 
 /**
