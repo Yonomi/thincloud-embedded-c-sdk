@@ -98,7 +98,7 @@ TEST should_build_commission_request(void)
     char buffer[256];
     IoT_Error_t rc = commissioning_request(buffer, "1234", "lock", "5678");
 
-    const char *expectedStr = "{\"id\":\"1234\",\"method\":\"commission\",\"params\":{\"data\":{\"deviceType\":\"lock\",\"physicalId\":\"5678\"}}}";
+    const char *expectedStr = "{\"id\":\"1234\",\"method\":\"commission\",\"params\":[{\"data\":{\"deviceType\":\"lock\",\"physicalId\":\"5678\"}}]}";
 
     ASSERT_STR_EQ(expectedStr, buffer);
     ASSERT_EQ(SUCCESS, rc);
