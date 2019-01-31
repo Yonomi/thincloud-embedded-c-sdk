@@ -257,15 +257,18 @@ IoT_Error_t commissioning_request(char *buffer, const char *requestId, const cha
     json_object *method = json_object_new_string("commission");
     json_object_object_add(obj, "method", method);
 
-    json_object *params = json_object_new_object();
+    json_object *params = json_object_new_array();
     json_object *data = json_object_new_object();
+    json_object *dataObj = json_object_new_object();
 
     json_object *deviceTypeValue = json_object_new_string(deviceType);
     json_object *physicalIdValue = json_object_new_string(physicalId);
     json_object_object_add(data, "deviceType", deviceTypeValue);
     json_object_object_add(data, "physicalId", physicalIdValue);
 
-    json_object_object_add(params, "data", data);
+    json_object_object_add(dataObj, "data", data);
+
+    json_object_array_add(params, dataObj);
 
     json_object_object_add(obj, "params", params);
 
