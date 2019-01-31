@@ -55,6 +55,10 @@
 #define REQUEST_METHOD_POST "POST"
 #define REQUEST_METHOD_DELETE "DELETE"
 
+char COMMISSIONING_RESPONSE_TOPIC_BUFFER[MAX_TOPIC_LENGTH];
+char COMMAND_TOPIC_BUFFER[MAX_TOPIC_LENGTH];
+char SERVICE_RESPONSE_TOPIC_BUFFER[MAX_TOPIC_LENGTH];
+
 /**
  * @brief Build a commission request topic
  * 
@@ -267,7 +271,6 @@ IoT_Error_t commissioning_request(char *buffer, const char *requestId, const cha
     json_object_object_add(data, "physicalId", physicalIdValue);
 
     json_object_object_add(dataObj, "data", data);
-
     json_object_array_add(params, dataObj);
 
     json_object_object_add(obj, "params", params);
@@ -706,16 +709,14 @@ IoT_Error_t send_service_request(AWS_IoT_Client *client, const char *requestId, 
  */
 IoT_Error_t subscribe_to_commissioning_response(AWS_IoT_Client *client, const char *requestId, const char *deviceType, const char *physicalId, pApplicationHandler_t handler, void *subscribeData)
 {
-    char topic[MAX_TOPIC_LENGTH];
-
-    IoT_Error_t rc = commission_response_topic(topic, deviceType, physicalId, requestId);
+    IoT_Error_t rc = commission_response_topic(COMMISSIONING_RESPONSE_TOPIC_BUFFER, deviceType, physicalId, requestId);
 
     if (rc != SUCCESS)
     {
         FUNC_EXIT_RC(rc);
     }
 
-    return aws_iot_mqtt_subscribe(client, topic, strlen(topic), QOS0, handler, subscribeData);
+    return aws_iot_mqtt_subscribe(client, COMMISSIONING_RESPONSE_TOPIC_BUFFER, strlen(COMMISSIONING_RESPONSE_TOPIC_BUFFER), QOS0, handler, subscribeData);
 }
 
 /**
@@ -730,16 +731,14 @@ IoT_Error_t subscribe_to_commissioning_response(AWS_IoT_Client *client, const ch
  */
 IoT_Error_t subscribe_to_command_request(AWS_IoT_Client *client, const char *deviceId, pApplicationHandler_t handler, void *subscribeData)
 {
-    char topic[MAX_TOPIC_LENGTH];
-
-    IoT_Error_t rc = command_request_topic(topic, deviceId);
+    IoT_Error_t rc = command_request_topic(COMMAND_TOPIC_BUFFER, deviceId);
 
     if (rc != SUCCESS)
     {
         FUNC_EXIT_RC(rc);
     }
 
-    return aws_iot_mqtt_subscribe(client, topic, strlen(topic), QOS0, handler, subscribeData);
+    return aws_iot_mqtt_subscribe(client, COMMAND_TOPIC_BUFFER, strlen(COMMAND_TOPIC_BUFFER), QOS0, handler, subscribeData);
 }
 
 /**
@@ -755,16 +754,14 @@ IoT_Error_t subscribe_to_command_request(AWS_IoT_Client *client, const char *dev
  */
 IoT_Error_t subscribe_to_service_response(AWS_IoT_Client *client, const char *deviceId, const char *requestId, pApplicationHandler_t handler, void *subscribeData)
 {
-    char topic[MAX_TOPIC_LENGTH];
-
-    IoT_Error_t rc = service_response_topic(topic, deviceId, requestId);
+    IoT_Error_t rc = service_response_topic(SERVICE_RESPONSE_TOPIC_BUFFER, deviceId, requestId);
 
     if (rc != SUCCESS)
     {
         FUNC_EXIT_RC(rc);
     }
 
-    return aws_iot_mqtt_subscribe(client, topic, strlen(topic), QOS0, handler, subscribeData);
+    return aws_iot_mqtt_subscribe(client, SERVICE_RESPONSE_TOPIC_BUFFER, strlen(SERVICE_RESPONSE_TOPIC_BUFFER), QOS0, handler, subscribeData);
 }
 
 /**
@@ -784,7 +781,7 @@ IoT_Error_t subscribe_to_service_response(AWS_IoT_Client *client, const char *de
  */
 IoT_Error_t tc_init(AWS_IoT_Client *client, char *hostAddr, char *rootCAPath, char *clientCRTPath, char *clientKeyPath, iot_disconnect_handler handler, void *disconnectData)
 {
-    IoT_Client_Init_Params params;
+    IoT_Client_Init_Params params = iotClientInitParamsDefault;
 
     params.enableAutoReconnect = false; // We enable this on connect
     params.pHostURL = hostAddr;
@@ -815,7 +812,7 @@ IoT_Error_t tc_init(AWS_IoT_Client *client, char *hostAddr, char *rootCAPath, ch
  */
 IoT_Error_t tc_connect(AWS_IoT_Client *client, char *clientId, bool autoReconnect)
 {
-    IoT_Client_Connect_Params params;
+    IoT_Client_Connect_Params params = iotClientConnectParamsDefault;
 
     params.keepAliveIntervalInSec = 600;
     params.isCleanSession = true;
