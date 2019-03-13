@@ -17,10 +17,10 @@
 #ifndef THINCLOUD_EMBEDDED_C_SDK_
 #define THINCLOUD_EMBEDDED_C_SDK_
 
-/* 1.0.1 */
+/* 1.1.0 */
 #define TC_EMBEDDED_C_SDK_VERSION_MAJOR 1
-#define TC_EMBEDDED_C_SDK_VERSION_MINOR 0
-#define TC_EMBEDDED_C_SDK_VERSION_PATCH 3
+#define TC_EMBEDDED_C_SDK_VERSION_MINOR 1
+#define TC_EMBEDDED_C_SDK_VERSION_PATCH 0
 
 /*
  * Thincloud C Embedded SDK
@@ -237,14 +237,16 @@ IoT_Error_t service_response_topic(char *buffer, const char *deviceId, const cha
  * 
  * Construct a commissioning request.
  * 
- * @param[out] buffer      Pointer to a string buffer to write to 
- * @param[in]  requestId   Unique ID for the request
- * @param[in]  deviceType  Requesting device's type
- * @param[in]  physicalId  Device's physical ID
+ * @param[out] buffer           Pointer to a string buffer to write to 
+ * @param[in]  requestId        Unique ID for the request
+ * @param[in]  deviceType       Requesting device's type
+ * @param[in]  physicalId       Device's physical ID
+ * @param[in]  relatedDeviceIds List of devices to associate on commissioning
+ * @param[in]  idsSize          Size of related device ids list 
  * 
  * @return Zero on success, negative value otherwise 
  */
-IoT_Error_t commissioning_request(char *buffer, const char *requestId, const char *deviceType, const char *physicalId)
+IoT_Error_t commissioning_request(char *buffer, const char *requestId, const char *deviceType, const char *physicalId, char **relatedDeviceIds, uint32_t idsSize)
 {
     if (deviceType == NULL || physicalId == NULL)
     {
@@ -269,6 +271,26 @@ IoT_Error_t commissioning_request(char *buffer, const char *requestId, const cha
     json_object *physicalIdValue = json_object_new_string(physicalId);
     json_object_object_add(data, "deviceType", deviceTypeValue);
     json_object_object_add(data, "physicalId", physicalIdValue);
+
+    if (relatedDeviceIds != NULL && idsSize > 0)
+    {
+        json_object *relatedDevices = json_object_new_array();
+        for (uint32_t i = 0; i < idsSize; i++)
+        {
+            const char *id = relatedDeviceIds[i];
+            if (id == NULL || strlen(id) <= 0)
+            {
+                continue;
+            }
+
+            json_object *deviceId = json_object_new_string(id);
+            json_object *deviceIdObj = json_object_new_object();
+            json_object_object_add(deviceIdObj, "deviceId", deviceId);
+            json_object_array_add(relatedDevices, deviceIdObj);
+        }
+
+        json_object_object_add(data, "relatedDevices", relatedDevices);
+    }
 
     json_object_object_add(dataObj, "data", data);
     json_object_array_add(params, dataObj);
@@ -618,14 +640,16 @@ IoT_Error_t send_command_response(AWS_IoT_Client *client, const char *deviceId, 
  * 
  * Publish a commissioning request to MQTT.
  * 
- * @param[in]  client      AWS IoT MQTT Client instance.
- * @param[in]  requestId   Unique ID for the request.
- * @param[in]  deviceType  Devices's device type.
- * @param[in]  physicalId  Device's physical ID.
+ * @param[in]  client           AWS IoT MQTT Client instance.
+ * @param[in]  requestId        Unique ID for the request.
+ * @param[in]  deviceType       Devices's device type.
+ * @param[in]  physicalId       Device's physical ID.
+ * @param[in]  relatedDeviceIds List of devices to associate on commissioning
+ * @param[in]  idsSize          Size of related device ids list 
  * 
  * @return Zero on success, negative value otherwise 
  */
-IoT_Error_t send_commissioning_request(AWS_IoT_Client *client, const char *requestId, const char *deviceType, const char *physicalId)
+IoT_Error_t send_commissioning_request(AWS_IoT_Client *client, const char *requestId, const char *deviceType, const char *physicalId, char **relatedDeviceIds, uint32_t idsSize)
 {
     char topic[MAX_TOPIC_LENGTH];
 
@@ -637,7 +661,7 @@ IoT_Error_t send_commissioning_request(AWS_IoT_Client *client, const char *reque
 
     char payload[MAX_JSON_TOKEN_EXPECTED];
 
-    rc = commissioning_request(payload, requestId, deviceType, physicalId);
+    rc = commissioning_request(payload, requestId, deviceType, physicalId, relatedDeviceIds, idsSize);
 
     if (rc != SUCCESS)
     {

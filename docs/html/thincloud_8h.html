@@ -63,7 +63,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">thincloud.h File Reference</div>  </div>
 </div><!--header-->
@@ -83,9 +84,9 @@ $(function() {
 Macros</h2></td></tr>
 <tr class="memitem:a64fa8ab71ee14902ffcd211ba72efc0e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a64fa8ab71ee14902ffcd211ba72efc0e">TC_EMBEDDED_C_SDK_VERSION_MAJOR</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a64fa8ab71ee14902ffcd211ba72efc0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeacc51b5a718d3c684016049a5ecb9a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#aeacc51b5a718d3c684016049a5ecb9a1">TC_EMBEDDED_C_SDK_VERSION_MINOR</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memitem:aeacc51b5a718d3c684016049a5ecb9a1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#aeacc51b5a718d3c684016049a5ecb9a1">TC_EMBEDDED_C_SDK_VERSION_MINOR</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:aeacc51b5a718d3c684016049a5ecb9a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52c7ee7fc828158eeae9efe074ac4604"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a52c7ee7fc828158eeae9efe074ac4604">TC_EMBEDDED_C_SDK_VERSION_PATCH</a>&#160;&#160;&#160;3</td></tr>
+<tr class="memitem:a52c7ee7fc828158eeae9efe074ac4604"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a52c7ee7fc828158eeae9efe074ac4604">TC_EMBEDDED_C_SDK_VERSION_PATCH</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a52c7ee7fc828158eeae9efe074ac4604"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f50e6165c50b7b13bcd5a7f7be4ea59"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a8f50e6165c50b7b13bcd5a7f7be4ea59">TC_ID_LENGTH</a>&#160;&#160;&#160;37</td></tr>
 <tr class="separator:a8f50e6165c50b7b13bcd5a7f7be4ea59"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,9 +121,9 @@ Functions</h2></td></tr>
 <tr class="memitem:abafe8f815b7a9ebad85ca59352a1ac24"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#abafe8f815b7a9ebad85ca59352a1ac24">service_response_topic</a> (char *buffer, const char *deviceId, const char *requestId)</td></tr>
 <tr class="memdesc:abafe8f815b7a9ebad85ca59352a1ac24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a service response topic.  <a href="#abafe8f815b7a9ebad85ca59352a1ac24">More...</a><br /></td></tr>
 <tr class="separator:abafe8f815b7a9ebad85ca59352a1ac24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36f482dd6c121b1d7c117f8fc9d0db3e"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a36f482dd6c121b1d7c117f8fc9d0db3e">commissioning_request</a> (char *buffer, const char *requestId, const char *deviceType, const char *physicalId)</td></tr>
-<tr class="memdesc:a36f482dd6c121b1d7c117f8fc9d0db3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a commissioning request.  <a href="#a36f482dd6c121b1d7c117f8fc9d0db3e">More...</a><br /></td></tr>
-<tr class="separator:a36f482dd6c121b1d7c117f8fc9d0db3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c3a08ed3d3857696c0f8f636c422985"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a0c3a08ed3d3857696c0f8f636c422985">commissioning_request</a> (char *buffer, const char *requestId, const char *deviceType, const char *physicalId, char **relatedDeviceIds, uint32_t idsSize)</td></tr>
+<tr class="memdesc:a0c3a08ed3d3857696c0f8f636c422985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a commissioning request.  <a href="#a0c3a08ed3d3857696c0f8f636c422985">More...</a><br /></td></tr>
+<tr class="separator:a0c3a08ed3d3857696c0f8f636c422985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f8937ca07466ed1fc060c967b8171ed"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a3f8937ca07466ed1fc060c967b8171ed">commissioning_response</a> (char *deviceId, uint16_t *statusCode, char *requestId, char *payload, uint16_t payloadLen)</td></tr>
 <tr class="memdesc:a3f8937ca07466ed1fc060c967b8171ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unmarshall a commissioning response.  <a href="#a3f8937ca07466ed1fc060c967b8171ed">More...</a><br /></td></tr>
 <tr class="separator:a3f8937ca07466ed1fc060c967b8171ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,9 +142,9 @@ Functions</h2></td></tr>
 <tr class="memitem:abb6a737aa28611694cf6cb0971622cbf"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#abb6a737aa28611694cf6cb0971622cbf">send_command_response</a> (AWS_IoT_Client *client, const char *deviceId, const char *commandId, uint16_t statusCode, bool isErrorResponse, char *errorMessage, json_object *body)</td></tr>
 <tr class="memdesc:abb6a737aa28611694cf6cb0971622cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send a command response.  <a href="#abb6a737aa28611694cf6cb0971622cbf">More...</a><br /></td></tr>
 <tr class="separator:abb6a737aa28611694cf6cb0971622cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10f8012ef03c84d930b4f6eecbd31f0c"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a10f8012ef03c84d930b4f6eecbd31f0c">send_commissioning_request</a> (AWS_IoT_Client *client, const char *requestId, const char *deviceType, const char *physicalId)</td></tr>
-<tr class="memdesc:a10f8012ef03c84d930b4f6eecbd31f0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send commissioning request.  <a href="#a10f8012ef03c84d930b4f6eecbd31f0c">More...</a><br /></td></tr>
-<tr class="separator:a10f8012ef03c84d930b4f6eecbd31f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9387d54bb28f0d8e9b19a54abb8a7d3a"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a9387d54bb28f0d8e9b19a54abb8a7d3a">send_commissioning_request</a> (AWS_IoT_Client *client, const char *requestId, const char *deviceType, const char *physicalId, char **relatedDeviceIds, uint32_t idsSize)</td></tr>
+<tr class="memdesc:a9387d54bb28f0d8e9b19a54abb8a7d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send commissioning request.  <a href="#a9387d54bb28f0d8e9b19a54abb8a7d3a">More...</a><br /></td></tr>
+<tr class="separator:a9387d54bb28f0d8e9b19a54abb8a7d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc9184374a9f2d760286f4e050b7b97e"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#acc9184374a9f2d760286f4e050b7b97e">send_service_request</a> (AWS_IoT_Client *client, const char *requestId, const char *deviceId, const char *method, json_object *reqParams)</td></tr>
 <tr class="memdesc:acc9184374a9f2d760286f4e050b7b97e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send service request.  <a href="#acc9184374a9f2d760286f4e050b7b97e">More...</a><br /></td></tr>
 <tr class="separator:acc9184374a9f2d760286f4e050b7b97e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,6 +163,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a9da5634005c1be1fdfaeddfd5d9104e0"><td class="memItemLeft" align="right" valign="top">IoT_Error_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a9da5634005c1be1fdfaeddfd5d9104e0">tc_connect</a> (AWS_IoT_Client *client, char *clientId, bool autoReconnect)</td></tr>
 <tr class="memdesc:a9da5634005c1be1fdfaeddfd5d9104e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start MQTT connection to ThinCloud host.  <a href="#a9da5634005c1be1fdfaeddfd5d9104e0">More...</a><br /></td></tr>
 <tr class="separator:a9da5634005c1be1fdfaeddfd5d9104e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a773f73b6891eec1154ce174c848f5d9a"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#a773f73b6891eec1154ce174c848f5d9a">COMMISSIONING_RESPONSE_TOPIC_BUFFER</a> [<a class="el" href="thincloud_8h.html#aa17438d0e0fed8ecf8907712bd3d1035">MAX_TOPIC_LENGTH</a>]</td></tr>
+<tr class="separator:a773f73b6891eec1154ce174c848f5d9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adba43581442316165f362171ffb6e58f"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#adba43581442316165f362171ffb6e58f">COMMAND_TOPIC_BUFFER</a> [<a class="el" href="thincloud_8h.html#aa17438d0e0fed8ecf8907712bd3d1035">MAX_TOPIC_LENGTH</a>]</td></tr>
+<tr class="separator:adba43581442316165f362171ffb6e58f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb5e06c666a2841616ac7cfb76946cb"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="thincloud_8h.html#acbb5e06c666a2841616ac7cfb76946cb">SERVICE_RESPONSE_TOPIC_BUFFER</a> [<a class="el" href="thincloud_8h.html#aa17438d0e0fed8ecf8907712bd3d1035">MAX_TOPIC_LENGTH</a>]</td></tr>
+<tr class="separator:acbb5e06c666a2841616ac7cfb76946cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aa17438d0e0fed8ecf8907712bd3d1035"></a>
@@ -256,7 +266,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TC_EMBEDDED_C_SDK_VERSION_MINOR&#160;&#160;&#160;0</td>
+          <td class="memname">#define TC_EMBEDDED_C_SDK_VERSION_MINOR&#160;&#160;&#160;1</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -270,7 +280,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define TC_EMBEDDED_C_SDK_VERSION_PATCH&#160;&#160;&#160;3</td>
+          <td class="memname">#define TC_EMBEDDED_C_SDK_VERSION_PATCH&#160;&#160;&#160;0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -604,8 +614,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a36f482dd6c121b1d7c117f8fc9d0db3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36f482dd6c121b1d7c117f8fc9d0db3e">&#9670;&nbsp;</a></span>commissioning_request()</h2>
+<a id="a0c3a08ed3d3857696c0f8f636c422985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c3a08ed3d3857696c0f8f636c422985">&#9670;&nbsp;</a></span>commissioning_request()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -632,7 +642,19 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>physicalId</em>&#160;</td>
+          <td class="paramname"><em>physicalId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>relatedDeviceIds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>idsSize</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -649,7 +671,9 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">buffer</td><td>Pointer to a string buffer to write to </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">requestId</td><td>Unique ID for the request </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">deviceType</td><td>Requesting device's type </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">physicalId</td><td>Device's physical ID</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">physicalId</td><td>Device's physical ID </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">relatedDeviceIds</td><td>List of devices to associate on commissioning </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">idsSize</td><td>Size of related device ids list</td></tr>
   </table>
   </dd>
 </dl>
@@ -791,8 +815,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a10f8012ef03c84d930b4f6eecbd31f0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10f8012ef03c84d930b4f6eecbd31f0c">&#9670;&nbsp;</a></span>send_commissioning_request()</h2>
+<a id="a9387d54bb28f0d8e9b19a54abb8a7d3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9387d54bb28f0d8e9b19a54abb8a7d3a">&#9670;&nbsp;</a></span>send_commissioning_request()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -819,7 +843,19 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>physicalId</em>&#160;</td>
+          <td class="paramname"><em>physicalId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>relatedDeviceIds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>idsSize</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -836,7 +872,9 @@ Functions</h2></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">client</td><td>AWS IoT MQTT Client instance. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">requestId</td><td>Unique ID for the request. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">deviceType</td><td>Devices's device type. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">physicalId</td><td>Device's physical ID.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">physicalId</td><td>Device's physical ID. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">relatedDeviceIds</td><td>List of devices to associate on commissioning </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">idsSize</td><td>Size of related device ids list</td></tr>
   </table>
   </dd>
 </dl>
@@ -1396,6 +1434,49 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Zero on success, negative value otherwise </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="adba43581442316165f362171ffb6e58f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adba43581442316165f362171ffb6e58f">&#9670;&nbsp;</a></span>COMMAND_TOPIC_BUFFER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char COMMAND_TOPIC_BUFFER[<a class="el" href="thincloud_8h.html#aa17438d0e0fed8ecf8907712bd3d1035">MAX_TOPIC_LENGTH</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a773f73b6891eec1154ce174c848f5d9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a773f73b6891eec1154ce174c848f5d9a">&#9670;&nbsp;</a></span>COMMISSIONING_RESPONSE_TOPIC_BUFFER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char COMMISSIONING_RESPONSE_TOPIC_BUFFER[<a class="el" href="thincloud_8h.html#aa17438d0e0fed8ecf8907712bd3d1035">MAX_TOPIC_LENGTH</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbb5e06c666a2841616ac7cfb76946cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbb5e06c666a2841616ac7cfb76946cb">&#9670;&nbsp;</a></span>SERVICE_RESPONSE_TOPIC_BUFFER</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char SERVICE_RESPONSE_TOPIC_BUFFER[<a class="el" href="thincloud_8h.html#aa17438d0e0fed8ecf8907712bd3d1035">MAX_TOPIC_LENGTH</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

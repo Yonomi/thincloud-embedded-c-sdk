@@ -123,7 +123,7 @@ int main()
 
         if (!isCommissioned && !requestedCommission)
         {
-            rc = send_commissioning_request(&client, commissionRequestId, deviceType, physicalId);
+            rc = send_commissioning_request(&client, commissionRequestId, deviceType, physicalId, NULL, 0);
             requestedCommission = true;
         }
     }
