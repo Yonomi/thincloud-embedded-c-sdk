@@ -96,9 +96,12 @@ TEST should_build_service_response_topic(void)
 TEST should_build_commission_request(void)
 {
     char buffer[256];
-    IoT_Error_t rc = commissioning_request(buffer, "1234", "lock", "5678");
+    char *ids[] = {
+        "1234",
+    };
+    IoT_Error_t rc = commissioning_request(buffer, "1234", "lock", "5678", ids, 1);
 
-    const char *expectedStr = "{\"id\":\"1234\",\"method\":\"commission\",\"params\":[{\"data\":{\"deviceType\":\"lock\",\"physicalId\":\"5678\"}}]}";
+    const char *expectedStr = "{\"id\":\"1234\",\"method\":\"commission\",\"params\":[{\"data\":{\"deviceType\":\"lock\",\"physicalId\":\"5678\",\"relatedDevices\":[{\"deviceId\":\"1234\"}]}}]}";
 
     ASSERT_STR_EQ(expectedStr, buffer);
     ASSERT_EQ(SUCCESS, rc);
