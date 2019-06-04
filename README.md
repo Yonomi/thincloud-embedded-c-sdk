@@ -144,7 +144,7 @@ $ doxygen Doxyfile
 
 ```bash
 $ git clone https://github.com/aws/aws-iot-device-sdk-embedded-C
-$ git clone https://github.com/ARMmbed/mbedtls aws-iot-device-sdk-embedded-C/external_libs/mbedtls
+$ git clone --recursive https://github.com/ARMmbed/mbedtls aws-iot-device-sdk-embedded-C/external_libs/mbedtls
 $ cd thincloud-embedded-c-sdk/tests
 $ make
 ```
