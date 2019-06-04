@@ -20,7 +20,7 @@ aliases:
         apt-get update && apt-get -y install python gcc g++ make git autoconf automake libtool
         cd ~
         git clone https://github.com/aws/aws-iot-device-sdk-embedded-C
-        git clone https://github.com/ARMmbed/mbedtls aws-iot-device-sdk-embedded-C/external_libs/mbedtls
+        git clone --branch mbedtls-2.16.1 https://github.com/ARMmbed/mbedtls aws-iot-device-sdk-embedded-C/external_libs/mbedtls
         git clone https://github.com/json-c/json-c
         cd json-c
         sh autogen.sh
